@@ -53,7 +53,7 @@
 			isa = PBXGroup;
 			children = (
 				E31108B2259AB39A00C1C4CB /* Outdoor_Activity_RecommenderApp.swift */,
-				E31108B4259AB39A00C1C4CB /* ContentView.swift */,
+				E31108C7259B7B9000C1C4CB /* Views */,
 				E31108B6259AB39D00C1C4CB /* Assets.xcassets */,
 				E31108BB259AB39D00C1C4CB /* Info.plist */,
 				E31108B8259AB39D00C1C4CB /* Preview Content */,
@@ -67,6 +67,14 @@
 				E31108B9259AB39D00C1C4CB /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		E31108C7259B7B9000C1C4CB /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E31108B4259AB39A00C1C4CB /* ContentView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
