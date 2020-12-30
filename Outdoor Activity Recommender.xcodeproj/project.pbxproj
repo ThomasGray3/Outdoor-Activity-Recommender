@@ -8,18 +8,24 @@
 
 /* Begin PBXBuildFile section */
 		E31108B3259AB39A00C1C4CB /* Outdoor_Activity_RecommenderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31108B2259AB39A00C1C4CB /* Outdoor_Activity_RecommenderApp.swift */; };
-		E31108B5259AB39A00C1C4CB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31108B4259AB39A00C1C4CB /* ContentView.swift */; };
+		E31108B5259AB39A00C1C4CB /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31108B4259AB39A00C1C4CB /* MapView.swift */; };
 		E31108B7259AB39D00C1C4CB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E31108B6259AB39D00C1C4CB /* Assets.xcassets */; };
 		E31108BA259AB39D00C1C4CB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E31108B9259AB39D00C1C4CB /* Preview Assets.xcassets */; };
+		E31108D0259B967300C1C4CB /* UserProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31108CF259B967300C1C4CB /* UserProfileView.swift */; };
+		E31108D4259B9B9D00C1C4CB /* FavouritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31108D3259B9B9D00C1C4CB /* FavouritesView.swift */; };
+		E31108D8259B9DBA00C1C4CB /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31108D7259B9DBA00C1C4CB /* TabBar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		E31108AF259AB39A00C1C4CB /* Outdoor Activity Recommender.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Outdoor Activity Recommender.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E31108B2259AB39A00C1C4CB /* Outdoor_Activity_RecommenderApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Outdoor_Activity_RecommenderApp.swift; sourceTree = "<group>"; };
-		E31108B4259AB39A00C1C4CB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		E31108B4259AB39A00C1C4CB /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		E31108B6259AB39D00C1C4CB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E31108B9259AB39D00C1C4CB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		E31108BB259AB39D00C1C4CB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E31108CF259B967300C1C4CB /* UserProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileView.swift; sourceTree = "<group>"; };
+		E31108D3259B9B9D00C1C4CB /* FavouritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesView.swift; sourceTree = "<group>"; };
+		E31108D7259B9DBA00C1C4CB /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,7 +78,10 @@
 		E31108C7259B7B9000C1C4CB /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				E31108B4259AB39A00C1C4CB /* ContentView.swift */,
+				E31108B4259AB39A00C1C4CB /* MapView.swift */,
+				E31108CF259B967300C1C4CB /* UserProfileView.swift */,
+				E31108D3259B9B9D00C1C4CB /* FavouritesView.swift */,
+				E31108D7259B9DBA00C1C4CB /* TabBar.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -146,8 +155,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E31108B5259AB39A00C1C4CB /* ContentView.swift in Sources */,
+				E31108B5259AB39A00C1C4CB /* MapView.swift in Sources */,
 				E31108B3259AB39A00C1C4CB /* Outdoor_Activity_RecommenderApp.swift in Sources */,
+				E31108D4259B9B9D00C1C4CB /* FavouritesView.swift in Sources */,
+				E31108D0259B967300C1C4CB /* UserProfileView.swift in Sources */,
+				E31108D8259B9DBA00C1C4CB /* TabBar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  SwiftUIView.swift
 //  Outdoor Activity Recommender
 //
 //  Created by THOMAS GRAY on 29/12/2020.
@@ -7,15 +7,14 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct UserProfileView: View {
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        Text("Profile View")
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct SwiftUIView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        UserProfileView()
     }
 }

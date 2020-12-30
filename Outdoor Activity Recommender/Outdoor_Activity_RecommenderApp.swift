@@ -11,7 +11,7 @@ import SwiftUI
 struct Outdoor_Activity_RecommenderApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            TabBar()
         }
     }
 }
