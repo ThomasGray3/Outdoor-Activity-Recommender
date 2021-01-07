@@ -14,6 +14,7 @@
 		E31108D0259B967300C1C4CB /* UserProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31108CF259B967300C1C4CB /* UserProfileView.swift */; };
 		E31108D4259B9B9D00C1C4CB /* FavouritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31108D3259B9B9D00C1C4CB /* FavouritesView.swift */; };
 		E31108D8259B9DBA00C1C4CB /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31108D7259B9DBA00C1C4CB /* TabBar.swift */; };
+		E3CCA19325A6234900917E16 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3CCA19225A6234800917E16 /* File.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		E31108CF259B967300C1C4CB /* UserProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileView.swift; sourceTree = "<group>"; };
 		E31108D3259B9B9D00C1C4CB /* FavouritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesView.swift; sourceTree = "<group>"; };
 		E31108D7259B9DBA00C1C4CB /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
+		E3CCA19225A6234800917E16 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +84,7 @@
 				E31108CF259B967300C1C4CB /* UserProfileView.swift */,
 				E31108D3259B9B9D00C1C4CB /* FavouritesView.swift */,
 				E31108D7259B9DBA00C1C4CB /* TabBar.swift */,
+				E3CCA19225A6234800917E16 /* File.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -156,6 +159,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E31108B5259AB39A00C1C4CB /* MapView.swift in Sources */,
+				E3CCA19325A6234900917E16 /* File.swift in Sources */,
 				E31108B3259AB39A00C1C4CB /* Outdoor_Activity_RecommenderApp.swift in Sources */,
 				E31108D4259B9B9D00C1C4CB /* FavouritesView.swift in Sources */,
 				E31108D0259B967300C1C4CB /* UserProfileView.swift in Sources */,

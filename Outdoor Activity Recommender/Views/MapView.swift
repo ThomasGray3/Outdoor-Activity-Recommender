@@ -6,20 +6,137 @@
 //
 
 import SwiftUI
+import MapKit
+import CoreLocation
+import Combine
+
+struct TaskEntry: Codable  {
+    let id: Int
+    let title: String
+}
 
 struct MapView: View {
+    @State private var resultsold = [TaskEntry]()
+   // let locationManager = CLLocationManager()
+   
+    @ObservedObject private var locationManager = LocationManager()
+    @State private var cancellable: AnyCancellable?
+    
+    @State private var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 51.507222, longitude: -0.1275), span: MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5))
+
+    private func setCurrentLocation() {
+        cancellable = locationManager.$lastLocation.sink { lastLocation in
+            region = MKCoordinateRegion(center: lastLocation?.coordinate ?? CLLocationCoordinate2D(), latitudinalMeters: 500, longitudinalMeters: 500)
+            
+        }
+    }
+    
     var body: some View {
-        NavigationView {
-            Text("Explore View")
-        .navigationBarTitle(Text("Explore"))
+        VStack {
+            NavigationView {
+                VStack {
+                    if locationManager.lastLocation != nil {
+                        Map(coordinateRegion: $region, interactionModes: .all, showsUserLocation: true, userTrackingMode: nil)
+                    } else {
+                        Text("bare with")
+                    }
+                List(resultsold, id: \.id) { item in
+                           VStack(alignment: .leading) {
+                               Text(item.title)
+                           }
+                }
+                .navigationBarTitle(Text("Explore"))
+                
+                }
+            } .onAppear {
+                setCurrentLocation()
+            }
+            Button(action: {
+                loadData()
+            }) {
+                Text("Find Acitvities")
+                    .font(.system(size: 20, weight: .heavy, design: .default))
+            }
+            .buttonStyle(GradientButtonStyle())
+            .offset(x: 0, y: -50.0)
         }
-        Button(action: /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Action@*/{}/*@END_MENU_TOKEN@*/) {
-            /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Content@*/Text("Button")/*@END_MENU_TOKEN@*/
+    }
+    
+    
+    func loadData() {
+            guard let url = URL(string: "https://jsonplaceholder.typicode.com/todos") else {
+                print("Invalid URL")
+                return
+            }
+            let request = URLRequest(url: url)
+
+            URLSession.shared.dataTask(with: request) { data, response, error in
+                if let data = data {
+                    if let response = try? JSONDecoder().decode([TaskEntry].self, from: data) {
+                        DispatchQueue.main.async {
+                            print(response)
+                            self.resultsold = response
+                        }
+                        return
+                    }
+                }
+                print("nothing")
+            }.resume()
         }
+    
+    func loadDataNEW() {
+        // Create URL
+        let url = URL(string: "https://jsonplaceholder.typicode.com/todos/1")
+        
+        guard let requestUrl = url else {
+            print("Invalid URL")
+            return
+        }
+        // Create URL Request
+        var request = URLRequest(url: requestUrl)
+        // Specify HTTP Method to use
+        request.httpMethod = "GET"
+        // Send HTTP Request
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+          
+               guard let data = data else { return }
+               // Using parseJSON() function to convert data to Swift struct
+               let todoItem = parseJSON(data: data)
+                   
+               // Read todo item title
+               guard let todoItemModel = todoItem else { return }
+               print("Todo item title = \(todoItemModel.title)")
+        
+        }
+       task.resume()
+    }
+    
+    
+    func parseJSON(data: Data) -> TaskEntry? {
+        
+        var returnValue: TaskEntry?
+        do {
+            returnValue = try JSONDecoder().decode(TaskEntry.self, from: data)
+        } catch {
+            print("Error took place\(error.localizedDescription).")
+        }
+        
+        return returnValue
     }
 }
 
 
+
+struct GradientButtonStyle: ButtonStyle {
+    func makeBody(configuration: Self.Configuration) -> some View {
+        configuration.label
+            .foregroundColor(Color.white)
+            .padding()
+            .background(LinearGradient(gradient: Gradient(colors: [Color.green, Color.blue]), startPoint: .leading, endPoint: .trailing))
+            .cornerRadius(15.0)
+            .scaleEffect(configuration.isPressed ? 1.1 : 1.0)
+    }
+}
 
 
 struct MapView_Previews: PreviewProvider {
