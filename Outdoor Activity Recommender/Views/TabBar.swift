@@ -24,7 +24,7 @@ struct TabBar: View {
                     Text("Favourites")
                 }
                 .onTapGesture {
-                    selectedTab = "favourite"
+                    selectedTab = "favourites"
                 }
             MapView()
                 .tag("explore")
@@ -37,7 +37,7 @@ struct TabBar: View {
                     Text("Explore")
                 }
                     .onTapGesture {
-                        selectedTab = "favourite"
+                        selectedTab = "explore"
                 }
             UserProfileView()
                 .tag("profile")

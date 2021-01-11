@@ -6,8 +6,6 @@
 //
 
 import SwiftUI
-import MapKit
-import CoreLocation
 import Combine
 
 struct TaskEntry: Codable  {
@@ -17,40 +15,23 @@ struct TaskEntry: Codable  {
 
 struct MapView: View {
     @State private var resultsold = [TaskEntry]()
-   // let locationManager = CLLocationManager()
-   
-    @ObservedObject private var locationManager = LocationManager()
-    @State private var cancellable: AnyCancellable?
-    
-    @State private var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 51.507222, longitude: -0.1275), span: MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5))
-
-    private func setCurrentLocation() {
-        cancellable = locationManager.$lastLocation.sink { lastLocation in
-            region = MKCoordinateRegion(center: lastLocation?.coordinate ?? CLLocationCoordinate2D(), latitudinalMeters: 500, longitudinalMeters: 500)
-            
-        }
-    }
+    @State  private var loaded = false
     
     var body: some View {
         VStack {
             NavigationView {
                 VStack {
-                    if locationManager.lastLocation != nil {
-                        Map(coordinateRegion: $region, interactionModes: .all, showsUserLocation: true, userTrackingMode: nil)
-                    } else {
-                        Text("bare with")
+                    LoadMap()
+                    if loaded == true {
+                        List {
+                            ForEach(resultsold, id: \.title) { res in
+                                Text(res.title)
+                            }
+                        }
+                    
                     }
-                List(resultsold, id: \.id) { item in
-                           VStack(alignment: .leading) {
-                               Text(item.title)
-                           }
-                }
-                .navigationBarTitle(Text("Explore"))
-                
-                }
-            } .onAppear {
-                setCurrentLocation()
-            }
+                }.navigationBarTitle(Text("Explore"))
+            } 
             Button(action: {
                 loadData()
             }) {
@@ -75,6 +56,7 @@ struct MapView: View {
                     if let response = try? JSONDecoder().decode([TaskEntry].self, from: data) {
                         DispatchQueue.main.async {
                             print(response)
+                            loaded = true
                             self.resultsold = response
                         }
                         return
