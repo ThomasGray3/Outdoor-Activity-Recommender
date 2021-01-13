@@ -28,7 +28,6 @@ struct MapView: View {
                                 Text(res.title)
                             }
                         }
-                    
                     }
                 }.navigationBarTitle(Text("Explore"))
             } 
@@ -45,26 +44,26 @@ struct MapView: View {
     
     
     func loadData() {
-            guard let url = URL(string: "https://jsonplaceholder.typicode.com/todos") else {
-                print("Invalid URL")
-                return
-            }
-            let request = URLRequest(url: url)
-
-            URLSession.shared.dataTask(with: request) { data, response, error in
-                if let data = data {
-                    if let response = try? JSONDecoder().decode([TaskEntry].self, from: data) {
-                        DispatchQueue.main.async {
-                            print(response)
-                            loaded = true
-                            self.resultsold = response
-                        }
-                        return
-                    }
-                }
-                print("nothing")
-            }.resume()
+        guard let url = URL(string: "https://jsonplaceholder.typicode.com/todos") else {
+            print("Invalid URL")
+            return
         }
+        let request = URLRequest(url: url)
+        
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            if let data = data {
+                if let response = try? JSONDecoder().decode([TaskEntry].self, from: data) {
+                    DispatchQueue.main.async {
+                        print(response)
+                        loaded = true
+                        self.resultsold = response
+                    }
+                    return
+                }
+            }
+            print("nothing")
+        }.resume()
+    }
     
     func loadDataNEW() {
         // Create URL
@@ -80,17 +79,17 @@ struct MapView: View {
         request.httpMethod = "GET"
         // Send HTTP Request
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-          
-               guard let data = data else { return }
-               // Using parseJSON() function to convert data to Swift struct
-               let todoItem = parseJSON(data: data)
-                   
-               // Read todo item title
-               guard let todoItemModel = todoItem else { return }
-               print("Todo item title = \(todoItemModel.title)")
-        
+            
+            guard let data = data else { return }
+            // Using parseJSON() function to convert data to Swift struct
+            let todoItem = parseJSON(data: data)
+            
+            // Read todo item title
+            guard let todoItemModel = todoItem else { return }
+            print("Todo item title = \(todoItemModel.title)")
+            
         }
-       task.resume()
+        task.resume()
     }
     
     
