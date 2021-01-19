@@ -10,10 +10,9 @@ import SwiftUI
 struct UserProfileView: View {
     
     @Environment(\.managedObjectContext) private var viewContext
-    
     @FetchRequest(sortDescriptors: [])
     private var preference: FetchedResults<UserPreference>
-    
+     
     var body: some View {
         NavigationView {
             List {
@@ -22,7 +21,7 @@ struct UserProfileView: View {
                     
                 }  .onDelete(perform: deletePreference)
             }
-        .navigationBarTitle(Text("Your Profile"))
+            .navigationBarTitle(Text("Your Profile"))
             .navigationBarItems(trailing: Button("Add preference") {
                 addPreference()
             })

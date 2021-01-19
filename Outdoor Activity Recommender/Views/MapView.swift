@@ -29,7 +29,8 @@ struct MapView: View {
                             }
                         }
                     }
-                }.navigationBarTitle(Text("Explore"))
+                }
+                .navigationBarTitle(Text("Explore"))
             } 
             Button(action: {
                 loadData()
