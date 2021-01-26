@@ -54,7 +54,7 @@ struct TabBar: View {
                         .onTapGesture {
                             selectedTab = "favourites"
                         }
-                    MapView()
+                    iosMapView()
                         .tag("explore")
                         .tabItem {
                             if   selectedTab == "explore" {
