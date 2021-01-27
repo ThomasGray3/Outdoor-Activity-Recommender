@@ -72,6 +72,7 @@ struct Preferences: View {
     private func addPreference() {
         let newPreference = UserPreference(context: viewContext)
         newPreference.activity = "\(activities[selectedAct])"
+        newPreference.id = UUID()
         savePreference()
     }
 }

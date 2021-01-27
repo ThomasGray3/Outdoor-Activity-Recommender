@@ -45,6 +45,7 @@ struct UserProfileView: View {
    private func addPreference() {
         let newPreference = UserPreference(context: viewContext)
         newPreference.activity = "New Activity"
+        newPreference.id = UUID()
         savePreference()
     }
 }

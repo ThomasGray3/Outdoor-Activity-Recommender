@@ -71,7 +71,7 @@ struct iosMapView: View {
                                         .frame(width: 30, height: 30)
                                         .foregroundColor(Color.white)
                                     })
-                                        .background(Color(UIColor.lightGray))
+                                        .background(LinearGradient(gradient: Gradient(colors: [Color.green, Color.blue]), startPoint: .leading, endPoint: .trailing))
                                         .cornerRadius(38.5)
                                         .padding()
                                         .shadow(color: Color.black.opacity(0.3), radius: 3, x: 3, y: 3)
