@@ -25,6 +25,11 @@ struct Preferences: View {
         
         VStack {
             Form {
+                Section{
+                    ForEach(preference) { UserPreference in
+                        Text(UserPreference.activity ?? "Untitled")
+                    }
+                }
                 Section(header: Text("Please select an activity")) {
                     Picker(selection: $selectedAct, label: Text("Select an activity")) {
                         ForEach(0 ..< activities.count) {
