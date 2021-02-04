@@ -17,12 +17,17 @@ struct FavouritesView: View {
         NavigationView {
             List {
                 ForEach(favs, id: \.self) { favs in
-                    Text(favs)
+                    NavigationLink(
+                        destination: /*@START_MENU_TOKEN@*/Text("Destination")/*@END_MENU_TOKEN@*/,
+                        label: {
+                            Text(favs)
+                        })
                 }
                 .onDelete(perform: delete)
             }
+            .navigationBarTitleDisplayMode(.large)
             .navigationBarItems(trailing: EditButton())
-            .navigationBarTitle(Text("Favourites"))
+            .navigationTitle(Text("Favourites"))
         }
     }
     func delete(at offsets: IndexSet) {

@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E31108B3259AB39A00C1C4CB /* Outdoor_Activity_RecommenderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31108B2259AB39A00C1C4CB /* Outdoor_Activity_RecommenderApp.swift */; };
+		E31108B3259AB39A00C1C4CB /* Wild_Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31108B2259AB39A00C1C4CB /* Wild_Route.swift */; };
 		E31108B5259AB39A00C1C4CB /* iosMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31108B4259AB39A00C1C4CB /* iosMapView.swift */; };
 		E31108B7259AB39D00C1C4CB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E31108B6259AB39D00C1C4CB /* Assets.xcassets */; };
 		E31108BA259AB39D00C1C4CB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E31108B9259AB39D00C1C4CB /* Preview Assets.xcassets */; };
@@ -20,9 +20,11 @@
 		E321240425B75FED00BBCA89 /* MapboxMobileEvents.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E32123FC25B75E7D00BBCA89 /* MapboxMobileEvents.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E321240625B7602400BBCA89 /* MapBoxMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = E321240525B7602400BBCA89 /* MapBoxMap.swift */; };
 		E321244F25BC681500BBCA89 /* SlideOverCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E321244E25BC681400BBCA89 /* SlideOverCard.swift */; };
+		E35549DD25C8237300066769 /* SkiResorts.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35549DC25C8237300066769 /* SkiResorts.swift */; };
+		E35549DF25C899AD00066769 /* ActivityCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35549DE25C899AD00066769 /* ActivityCard.swift */; };
+		E35549E125C989B200066769 /* UserLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35549E025C989B100066769 /* UserLocation.swift */; };
 		E3737E7325AF60A1005B98FF /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3737E7225AF60A1005B98FF /* Persistence.swift */; };
-		E3CCA19325A6234900917E16 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3CCA19225A6234800917E16 /* File.swift */; };
-		E3CCA19B25A7ADF800917E16 /* LoadMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3CCA19A25A7ADF800917E16 /* LoadMap.swift */; };
+		E38A3A4425CB750D006C0DC4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E38A3A4325CB750D006C0DC4 /* GoogleService-Info.plist */; };
 		E3CCA1A225AF2F4D00917E16 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3CCA1A125AF2F4D00917E16 /* Preferences.swift */; };
 		E3CCA1A625AF33F100917E16 /* PreferencesData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E3CCA1A425AF33F000917E16 /* PreferencesData.xcdatamodeld */; };
 /* End PBXBuildFile section */
@@ -43,8 +45,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		E31108AF259AB39A00C1C4CB /* Outdoor Activity Recommender.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Outdoor Activity Recommender.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		E31108B2259AB39A00C1C4CB /* Outdoor_Activity_RecommenderApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Outdoor_Activity_RecommenderApp.swift; sourceTree = "<group>"; };
+		E31108AF259AB39A00C1C4CB /* Wild Route.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Wild Route.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E31108B2259AB39A00C1C4CB /* Wild_Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wild_Route.swift; sourceTree = "<group>"; };
 		E31108B4259AB39A00C1C4CB /* iosMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iosMapView.swift; sourceTree = "<group>"; };
 		E31108B6259AB39D00C1C4CB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E31108B9259AB39D00C1C4CB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -56,9 +58,11 @@
 		E32123FC25B75E7D00BBCA89 /* MapboxMobileEvents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MapboxMobileEvents.framework; sourceTree = "<group>"; };
 		E321240525B7602400BBCA89 /* MapBoxMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapBoxMap.swift; sourceTree = "<group>"; };
 		E321244E25BC681400BBCA89 /* SlideOverCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideOverCard.swift; sourceTree = "<group>"; };
+		E35549DC25C8237300066769 /* SkiResorts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkiResorts.swift; sourceTree = "<group>"; };
+		E35549DE25C899AD00066769 /* ActivityCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityCard.swift; sourceTree = "<group>"; };
+		E35549E025C989B100066769 /* UserLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocation.swift; sourceTree = "<group>"; };
 		E3737E7225AF60A1005B98FF /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
-		E3CCA19225A6234800917E16 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
-		E3CCA19A25A7ADF800917E16 /* LoadMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadMap.swift; sourceTree = "<group>"; };
+		E38A3A4325CB750D006C0DC4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E3CCA1A125AF2F4D00917E16 /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
 		E3CCA1A525AF33F000917E16 /* PreferencesData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PreferencesData.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -81,7 +85,7 @@
 			children = (
 				E32123FB25B75E7D00BBCA89 /* Mapbox.framework */,
 				E32123FC25B75E7D00BBCA89 /* MapboxMobileEvents.framework */,
-				E31108B1259AB39A00C1C4CB /* Outdoor Activity Recommender */,
+				E31108B1259AB39A00C1C4CB /* Wild Route */,
 				E31108B0259AB39A00C1C4CB /* Products */,
 			);
 			sourceTree = "<group>";
@@ -89,23 +93,24 @@
 		E31108B0259AB39A00C1C4CB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E31108AF259AB39A00C1C4CB /* Outdoor Activity Recommender.app */,
+				E31108AF259AB39A00C1C4CB /* Wild Route.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		E31108B1259AB39A00C1C4CB /* Outdoor Activity Recommender */ = {
+		E31108B1259AB39A00C1C4CB /* Wild Route */ = {
 			isa = PBXGroup;
 			children = (
-				E31108B2259AB39A00C1C4CB /* Outdoor_Activity_RecommenderApp.swift */,
+				E31108B2259AB39A00C1C4CB /* Wild_Route.swift */,
 				E31108C7259B7B9000C1C4CB /* Views */,
 				E31108B6259AB39D00C1C4CB /* Assets.xcassets */,
 				E3737E7225AF60A1005B98FF /* Persistence.swift */,
 				E31108BB259AB39D00C1C4CB /* Info.plist */,
+				E38A3A4325CB750D006C0DC4 /* GoogleService-Info.plist */,
 				E3CCA1A425AF33F000917E16 /* PreferencesData.xcdatamodeld */,
 				E31108B8259AB39D00C1C4CB /* Preview Content */,
 			);
-			path = "Outdoor Activity Recommender";
+			path = "Wild Route";
 			sourceTree = "<group>";
 		};
 		E31108B8259AB39D00C1C4CB /* Preview Content */ = {
@@ -123,11 +128,12 @@
 				E31108CF259B967300C1C4CB /* UserProfileView.swift */,
 				E31108D3259B9B9D00C1C4CB /* FavouritesView.swift */,
 				E31108D7259B9DBA00C1C4CB /* TabBar.swift */,
-				E3CCA19225A6234800917E16 /* File.swift */,
-				E3CCA19A25A7ADF800917E16 /* LoadMap.swift */,
 				E3CCA1A125AF2F4D00917E16 /* Preferences.swift */,
 				E321240525B7602400BBCA89 /* MapBoxMap.swift */,
 				E321244E25BC681400BBCA89 /* SlideOverCard.swift */,
+				E35549DC25C8237300066769 /* SkiResorts.swift */,
+				E35549DE25C899AD00066769 /* ActivityCard.swift */,
+				E35549E025C989B100066769 /* UserLocation.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -135,9 +141,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		E31108AE259AB39A00C1C4CB /* Outdoor Activity Recommender */ = {
+		E31108AE259AB39A00C1C4CB /* Wild Route */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E31108BE259AB39D00C1C4CB /* Build configuration list for PBXNativeTarget "Outdoor Activity Recommender" */;
+			buildConfigurationList = E31108BE259AB39D00C1C4CB /* Build configuration list for PBXNativeTarget "Wild Route" */;
 			buildPhases = (
 				E31108AB259AB39A00C1C4CB /* Sources */,
 				E31108AC259AB39A00C1C4CB /* Frameworks */,
@@ -148,9 +154,9 @@
 			);
 			dependencies = (
 			);
-			name = "Outdoor Activity Recommender";
+			name = "Wild Route";
 			productName = "Outdoor Activity Recommender";
-			productReference = E31108AF259AB39A00C1C4CB /* Outdoor Activity Recommender.app */;
+			productReference = E31108AF259AB39A00C1C4CB /* Wild Route.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -167,7 +173,7 @@
 					};
 				};
 			};
-			buildConfigurationList = E31108AA259AB39A00C1C4CB /* Build configuration list for PBXProject "Outdoor Activity Recommender" */;
+			buildConfigurationList = E31108AA259AB39A00C1C4CB /* Build configuration list for PBXProject "Wild Route" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -180,7 +186,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				E31108AE259AB39A00C1C4CB /* Outdoor Activity Recommender */,
+				E31108AE259AB39A00C1C4CB /* Wild Route */,
 			);
 		};
 /* End PBXProject section */
@@ -192,6 +198,7 @@
 			files = (
 				E31108BA259AB39D00C1C4CB /* Preview Assets.xcassets in Resources */,
 				E31108B7259AB39D00C1C4CB /* Assets.xcassets in Resources */,
+				E38A3A4425CB750D006C0DC4 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -204,15 +211,16 @@
 			files = (
 				E31108B5259AB39A00C1C4CB /* iosMapView.swift in Sources */,
 				E321240625B7602400BBCA89 /* MapBoxMap.swift in Sources */,
-				E3CCA19325A6234900917E16 /* File.swift in Sources */,
-				E31108B3259AB39A00C1C4CB /* Outdoor_Activity_RecommenderApp.swift in Sources */,
+				E31108B3259AB39A00C1C4CB /* Wild_Route.swift in Sources */,
 				E31108D4259B9B9D00C1C4CB /* FavouritesView.swift in Sources */,
 				E321244F25BC681500BBCA89 /* SlideOverCard.swift in Sources */,
+				E35549E125C989B200066769 /* UserLocation.swift in Sources */,
 				E31108D0259B967300C1C4CB /* UserProfileView.swift in Sources */,
 				E31108D8259B9DBA00C1C4CB /* TabBar.swift in Sources */,
 				E3CCA1A225AF2F4D00917E16 /* Preferences.swift in Sources */,
-				E3CCA19B25A7ADF800917E16 /* LoadMap.swift in Sources */,
+				E35549DF25C899AD00066769 /* ActivityCard.swift in Sources */,
 				E3CCA1A625AF33F100917E16 /* PreferencesData.xcdatamodeld in Sources */,
+				E35549DD25C8237300066769 /* SkiResorts.swift in Sources */,
 				E3737E7325AF60A1005B98FF /* Persistence.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -342,23 +350,24 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"Outdoor Activity Recommender/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Wild Route/Preview Content\"";
 				DEVELOPMENT_TEAM = QTL3ZJFVAP;
 				ENABLE_PREVIEWS = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
-				INFOPLIST_FILE = "Outdoor Activity Recommender/Info.plist";
+				INFOPLIST_FILE = "Wild Route/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ThomasGray.Outdoor-Activity-Recommender";
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ThomasGray.Wild-Route";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_WORKSPACE = NO;
 			};
 			name = Debug;
@@ -369,23 +378,24 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"Outdoor Activity Recommender/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Wild Route/Preview Content\"";
 				DEVELOPMENT_TEAM = QTL3ZJFVAP;
 				ENABLE_PREVIEWS = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
-				INFOPLIST_FILE = "Outdoor Activity Recommender/Info.plist";
+				INFOPLIST_FILE = "Wild Route/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ThomasGray.Outdoor-Activity-Recommender";
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ThomasGray.Wild-Route";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_WORKSPACE = NO;
 			};
 			name = Release;
@@ -393,7 +403,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		E31108AA259AB39A00C1C4CB /* Build configuration list for PBXProject "Outdoor Activity Recommender" */ = {
+		E31108AA259AB39A00C1C4CB /* Build configuration list for PBXProject "Wild Route" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E31108BC259AB39D00C1C4CB /* Debug */,
@@ -402,7 +412,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E31108BE259AB39D00C1C4CB /* Build configuration list for PBXNativeTarget "Outdoor Activity Recommender" */ = {
+		E31108BE259AB39D00C1C4CB /* Build configuration list for PBXNativeTarget "Wild Route" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E31108BF259AB39D00C1C4CB /* Debug */,

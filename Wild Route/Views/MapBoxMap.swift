@@ -30,5 +30,5 @@ struct MapView: UIViewRepresentable {
     func styleURL(_ styleURL: URL) -> MapView {
             mapView.styleURL = styleURL
             return self
-        }
+    }
 }

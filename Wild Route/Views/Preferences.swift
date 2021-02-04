@@ -22,7 +22,7 @@ struct Preferences: View {
     
     
     var body: some View {
-        
+        NavigationView{
         VStack {
             Form {
                 Section{
@@ -36,7 +36,6 @@ struct Preferences: View {
                             Text(self.activities[$0]).tag($0)
                         }
                     }.pickerStyle(WheelPickerStyle())
-                    
                     Button(action: {
                         addPreference()
                     }) {
@@ -51,9 +50,11 @@ struct Preferences: View {
                 }
             }
         }
-        .navigationBarTitle(Text("Welcome"))
-        .onAppear() {
-            makeVisible()
+            .navigationBarTitleDisplayMode(.large)
+            .navigationTitle(Text("Welcome"))
+            .onAppear() {
+                makeVisible()
+            }
         }
     }
     func makeVisible() {

@@ -2,19 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSLocationTemporaryUsageDescriptionDictionary</key>
-	<dict>
-		<key>MGLAccuracyAuthorizationDescription</key>
-		<string>Please enable precise location. Turn-by-turn directions only work when precise location data is available.</string>
-	</dict>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Your precise location is used to calculate turn-by-turn directions, show your location on the map, and help improve the map.</string>
-	<key>MGLMapboxAccessToken</key>
-	<string>pk.eyJ1IjoidGhvbWFzYXhncmF5IiwiYSI6ImNrazRibmR2bDBmMHgycHFuYXJyanV0Z3oifQ.sZy_W5YkmwVYAb1DUNTf0g</string>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>Your location is required for xyz benefits for you&lt;</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<key>CFBundleDisplayName</key>
+	<string>Wild Route</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -26,11 +17,22 @@
 	<key>CFBundlePackageType</key>
 	<string>$(PRODUCT_BUNDLE_PACKAGE_TYPE)</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0</string>
+	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>MGLMapboxAccessToken</key>
+	<string>pk.eyJ1IjoidGhvbWFzYXhncmF5IiwiYSI6ImNrazRibmR2bDBmMHgycHFuYXJyanV0Z3oifQ.sZy_W5YkmwVYAb1DUNTf0g</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Your location is required for xyz benefits for you&lt;</string>
+	<key>NSLocationTemporaryUsageDescriptionDictionary</key>
+	<dict>
+		<key>MGLAccuracyAuthorizationDescription</key>
+		<string>Please enable precise location. Turn-by-turn directions only work when precise location data is available.</string>
+	</dict>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Your precise location is used to calculate turn-by-turn directions, show your location on the map, and help improve the map.</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -44,6 +46,8 @@
 	<array>
 		<string>armv7</string>
 	</array>
+	<key>UIRequiresFullScreen</key>
+	<false/>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

@@ -27,7 +27,6 @@ struct TabBar: View {
     var body: some View {
         VStack {
             if (emptyCoreData) {
-                NavigationView{
                     VStack {
                         Preferences()
                         Button(action: {
@@ -38,53 +37,50 @@ struct TabBar: View {
                         }
                         .buttonStyle(GradientButtonStyle())
                     }
-                }
             } else {
                 TabView(selection: $selectedTab) {
                     FavouritesView()
                         .tag("favourites")
                         .tabItem {
-                            if   selectedTab == "favourites" {
+                            if (selectedTab == "favourites") {
                                 Image(systemName: "star.fill")
                             } else{
                                 Image(systemName: "star")
                             }
                             Text("Favourites")
                         }
-                        .onTapGesture {
-                            selectedTab = "favourites"
-                        }
+                       
                     iosMapView()
                         .tag("explore")
                         .tabItem {
-                            if   selectedTab == "explore" {
+                            if (selectedTab == "explore") {
                                 Image(systemName: "map.fill")
                             } else{
                                 Image(systemName: "map")
                             }
                             Text("Explore")
                         }
-                        .onTapGesture {
-                            selectedTab = "explore"
-                        }
+                        
                     UserProfileView()
                         .tag("profile")
                         .tabItem {
-                            if   selectedTab == "profile" {
+                            if (selectedTab == "profile") {
                                 Image(systemName: "person.fill")
                             } else{
                                 Image(systemName: "person")
                             }
                             Text("Profile")
                         }
-                        .onTapGesture {
-                            selectedTab = "profile"
-                        }
                 }
                 .font(.headline)
                 .tabViewStyle(/*@START_MENU_TOKEN@*/DefaultTabViewStyle()/*@END_MENU_TOKEN@*/)
             }
-        }.onAppear(perform: {
+        }.onAppear {
+            AppDelegate.orientationLock = UIInterfaceOrientationMask.portrait
+            UIDevice.current.setValue(UIInterfaceOrientation.portrait.rawValue, forKey: "orientation")
+            UINavigationController.attemptRotationToDeviceOrientation()
+        }
+        .onAppear(perform: {
             checkData()
         })
     }

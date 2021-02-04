@@ -21,7 +21,8 @@ struct UserProfileView: View {
                     
                 }  .onDelete(perform: deletePreference)
             }
-            .navigationBarTitle(Text("Your Profile"))
+            .navigationBarTitleDisplayMode(.large)
+            .navigationTitle(Text("Profile"))
             .navigationBarItems(trailing: Button("Add preference") {
                 addPreference()
             })
