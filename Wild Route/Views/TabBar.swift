@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+//import FirebaseAuth
 
 struct TabBar: View {
     
@@ -24,6 +25,8 @@ struct TabBar: View {
         }
     }
     
+   
+    
     var body: some View {
         VStack {
             if (emptyCoreData) {
@@ -39,17 +42,6 @@ struct TabBar: View {
                     }
             } else {
                 TabView(selection: $selectedTab) {
-                    FavouritesView()
-                        .tag("favourites")
-                        .tabItem {
-                            if (selectedTab == "favourites") {
-                                Image(systemName: "star.fill")
-                            } else{
-                                Image(systemName: "star")
-                            }
-                            Text("Favourites")
-                        }
-                       
                     iosMapView()
                         .tag("explore")
                         .tabItem {
@@ -59,6 +51,28 @@ struct TabBar: View {
                                 Image(systemName: "map")
                             }
                             Text("Explore")
+                        }
+                    
+                    FavouritesView()
+                        .tag("favourites")
+                        .tabItem {
+                            if (selectedTab == "favourites") {
+                                Image(systemName: "heart.fill")
+                            } else{
+                                Image(systemName: "heart")
+                            }
+                            Text("Favourites")
+                        }
+                       
+                    RatingsView()
+                        .tag("ratings")
+                        .tabItem {
+                            if (selectedTab == "ratings") {
+                                Image(systemName: "star.fill")
+                            } else{
+                                Image(systemName: "star")
+                            }
+                            Text("Ratings")
                         }
                         
                     UserProfileView()

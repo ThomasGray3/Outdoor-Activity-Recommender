@@ -23,11 +23,10 @@ struct iosMapView: View {
     }
     
     var body: some View {
-        
         NavigationView {
             VStack{
                 ZStack{
-                    MapView().zoomLevel(5).centerCoordinate(.init(latitude: userLatitude, longitude: userLongitude)).userLoc(true).styleURL(URL(string: "mapbox://styles/mapbox/outdoors-v11")!)
+                    MapView().zoomLevel(5).centerCoordinate(.init(latitude: userLatitude, longitude: userLongitude)).userLoc(true).styleURL(URL(string: "mapbox://styles/mapbox/outdoors-v11")!).edgesIgnoringSafeArea(.top)
                     VStack{
                         Spacer()
                         if loaded == false {
@@ -68,8 +67,8 @@ struct iosMapView: View {
                     }
                 }
             }
-            .navigationBarTitleDisplayMode(.large)
-            .navigationTitle(Text("Explore"))
+            //.navigationBarTitleDisplayMode(.large)
+            //.navigationTitle(Text("Explore"))
         }
     }
 }

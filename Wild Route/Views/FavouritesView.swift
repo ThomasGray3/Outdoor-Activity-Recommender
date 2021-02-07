@@ -11,8 +11,6 @@ struct FavouritesView: View {
     
     @State private var favs = ["item 1", "item 2", "item 3"]
     
-    
-    
     var body: some View {
         NavigationView {
             List {
