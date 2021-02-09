@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3CDC87AFB3286FB9150FA955 /* Pods_Wild_Route.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 659522E74C6427AAE0F5818B /* Pods_Wild_Route.framework */; };
 		E31108B3259AB39A00C1C4CB /* Wild_Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31108B2259AB39A00C1C4CB /* Wild_Route.swift */; };
 		E31108B5259AB39A00C1C4CB /* iosMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31108B4259AB39A00C1C4CB /* iosMapView.swift */; };
 		E31108B7259AB39D00C1C4CB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E31108B6259AB39D00C1C4CB /* Assets.xcassets */; };
@@ -16,8 +17,6 @@
 		E31108D8259B9DBA00C1C4CB /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31108D7259B9DBA00C1C4CB /* TabBar.swift */; };
 		E321240025B75FEB00BBCA89 /* Mapbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E32123FB25B75E7D00BBCA89 /* Mapbox.framework */; };
 		E321240125B75FEB00BBCA89 /* Mapbox.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E32123FB25B75E7D00BBCA89 /* Mapbox.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		E321240325B75FED00BBCA89 /* MapboxMobileEvents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E32123FC25B75E7D00BBCA89 /* MapboxMobileEvents.framework */; settings = {ATTRIBUTES = (Required, ); }; };
-		E321240425B75FED00BBCA89 /* MapboxMobileEvents.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E32123FC25B75E7D00BBCA89 /* MapboxMobileEvents.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E321240625B7602400BBCA89 /* MapBoxMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = E321240525B7602400BBCA89 /* MapBoxMap.swift */; };
 		E321244F25BC681500BBCA89 /* SlideOverCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E321244E25BC681400BBCA89 /* SlideOverCard.swift */; };
 		E35549DD25C8237300066769 /* SkiResorts.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35549DC25C8237300066769 /* SkiResorts.swift */; };
@@ -25,12 +24,14 @@
 		E35549E125C989B200066769 /* UserLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35549E025C989B100066769 /* UserLocation.swift */; };
 		E3737E7325AF60A1005B98FF /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3737E7225AF60A1005B98FF /* Persistence.swift */; };
 		E379225825CF05AF00B3819A /* RatingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E379225725CF05AF00B3819A /* RatingsView.swift */; };
+		E379237E25D0A1F100B3819A /* SearchNearby.swift in Sources */ = {isa = PBXBuildFile; fileRef = E379237D25D0A1F100B3819A /* SearchNearby.swift */; };
+		E379238125D181DF00B3819A /* MapboxMobileEvents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E379237F25D181D300B3819A /* MapboxMobileEvents.framework */; };
+		E379238225D181DF00B3819A /* MapboxMobileEvents.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E379237F25D181D300B3819A /* MapboxMobileEvents.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E3C22DA825CCC8710025332C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E3C22DA725CCC8710025332C /* GoogleService-Info.plist */; };
 		E3C22DD325CDFA050025332C /* RatingStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C22DD225CDFA050025332C /* RatingStructure.swift */; };
 		E3C22DD525CDFB780025332C /* Rating.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C22DD425CDFB780025332C /* Rating.swift */; };
 		E3CCA1A225AF2F4D00917E16 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3CCA1A125AF2F4D00917E16 /* Preferences.swift */; };
 		E3CCA1A625AF33F100917E16 /* PreferencesData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E3CCA1A425AF33F000917E16 /* PreferencesData.xcdatamodeld */; };
-		EBE196DD1F54314AA6976834 /* Pods_Wild_Route.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57040544AD5A9A0FB7508EC9 /* Pods_Wild_Route.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -40,7 +41,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				E321240425B75FED00BBCA89 /* MapboxMobileEvents.framework in Embed Frameworks */,
+				E379238225D181DF00B3819A /* MapboxMobileEvents.framework in Embed Frameworks */,
 				E321240125B75FEB00BBCA89 /* Mapbox.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -49,9 +50,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		57040544AD5A9A0FB7508EC9 /* Pods_Wild_Route.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Wild_Route.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		706BA6CF71F8DE3CEEC0E90C /* Pods-Wild Route.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wild Route.debug.xcconfig"; path = "Target Support Files/Pods-Wild Route/Pods-Wild Route.debug.xcconfig"; sourceTree = "<group>"; };
-		C26D9CDE120460E537BD323E /* Pods-Wild Route.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wild Route.release.xcconfig"; path = "Target Support Files/Pods-Wild Route/Pods-Wild Route.release.xcconfig"; sourceTree = "<group>"; };
+		09D537B02272FCA007104741 /* Pods-Wild Route.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wild Route.release.xcconfig"; path = "Target Support Files/Pods-Wild Route/Pods-Wild Route.release.xcconfig"; sourceTree = "<group>"; };
+		659522E74C6427AAE0F5818B /* Pods_Wild_Route.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Wild_Route.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E31108AF259AB39A00C1C4CB /* Wild Route.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Wild Route.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E31108B2259AB39A00C1C4CB /* Wild_Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wild_Route.swift; sourceTree = "<group>"; };
 		E31108B4259AB39A00C1C4CB /* iosMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iosMapView.swift; sourceTree = "<group>"; };
@@ -62,7 +62,6 @@
 		E31108D3259B9B9D00C1C4CB /* FavouritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesView.swift; sourceTree = "<group>"; };
 		E31108D7259B9DBA00C1C4CB /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
 		E32123FB25B75E7D00BBCA89 /* Mapbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Mapbox.framework; sourceTree = "<group>"; };
-		E32123FC25B75E7D00BBCA89 /* MapboxMobileEvents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MapboxMobileEvents.framework; sourceTree = "<group>"; };
 		E321240525B7602400BBCA89 /* MapBoxMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapBoxMap.swift; sourceTree = "<group>"; };
 		E321244E25BC681400BBCA89 /* SlideOverCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideOverCard.swift; sourceTree = "<group>"; };
 		E35549DC25C8237300066769 /* SkiResorts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkiResorts.swift; sourceTree = "<group>"; };
@@ -70,11 +69,14 @@
 		E35549E025C989B100066769 /* UserLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocation.swift; sourceTree = "<group>"; };
 		E3737E7225AF60A1005B98FF /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		E379225725CF05AF00B3819A /* RatingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingsView.swift; sourceTree = "<group>"; };
+		E379237D25D0A1F100B3819A /* SearchNearby.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchNearby.swift; sourceTree = "<group>"; };
+		E379237F25D181D300B3819A /* MapboxMobileEvents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapboxMobileEvents.framework; path = "../../Downloads/mapbox-ios-sdk-dynamic-with-events/dynamic/MapboxMobileEvents.framework"; sourceTree = "<group>"; };
 		E3C22DA725CCC8710025332C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E3C22DD225CDFA050025332C /* RatingStructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingStructure.swift; sourceTree = "<group>"; };
 		E3C22DD425CDFB780025332C /* Rating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rating.swift; sourceTree = "<group>"; };
 		E3CCA1A125AF2F4D00917E16 /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
 		E3CCA1A525AF33F000917E16 /* PreferencesData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PreferencesData.xcdatamodel; sourceTree = "<group>"; };
+		EF3167E4F0676197A4835CE3 /* Pods-Wild Route.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wild Route.debug.xcconfig"; path = "Target Support Files/Pods-Wild Route/Pods-Wild Route.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,20 +84,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E321240325B75FED00BBCA89 /* MapboxMobileEvents.framework in Frameworks */,
+				E379238125D181DF00B3819A /* MapboxMobileEvents.framework in Frameworks */,
 				E321240025B75FEB00BBCA89 /* Mapbox.framework in Frameworks */,
-				EBE196DD1F54314AA6976834 /* Pods_Wild_Route.framework in Frameworks */,
+				3CDC87AFB3286FB9150FA955 /* Pods_Wild_Route.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		7C11459007386409F4EB9CAF /* Pods */ = {
+		3098F57DB696DDDE2699D24A /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				706BA6CF71F8DE3CEEC0E90C /* Pods-Wild Route.debug.xcconfig */,
-				C26D9CDE120460E537BD323E /* Pods-Wild Route.release.xcconfig */,
+				EF3167E4F0676197A4835CE3 /* Pods-Wild Route.debug.xcconfig */,
+				09D537B02272FCA007104741 /* Pods-Wild Route.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -103,7 +105,7 @@
 		BFDC8DAAF9CF861CCF58F1FF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				57040544AD5A9A0FB7508EC9 /* Pods_Wild_Route.framework */,
+				659522E74C6427AAE0F5818B /* Pods_Wild_Route.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -112,11 +114,11 @@
 			isa = PBXGroup;
 			children = (
 				E32123FB25B75E7D00BBCA89 /* Mapbox.framework */,
-				E32123FC25B75E7D00BBCA89 /* MapboxMobileEvents.framework */,
+				E379237F25D181D300B3819A /* MapboxMobileEvents.framework */,
 				E31108B1259AB39A00C1C4CB /* Wild Route */,
 				E31108B0259AB39A00C1C4CB /* Products */,
 				BFDC8DAAF9CF861CCF58F1FF /* Frameworks */,
-				7C11459007386409F4EB9CAF /* Pods */,
+				3098F57DB696DDDE2699D24A /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -165,6 +167,7 @@
 				E321244E25BC681400BBCA89 /* SlideOverCard.swift */,
 				E35549DC25C8237300066769 /* SkiResorts.swift */,
 				E35549DE25C899AD00066769 /* ActivityCard.swift */,
+				E379237D25D0A1F100B3819A /* SearchNearby.swift */,
 				E35549E025C989B100066769 /* UserLocation.swift */,
 			);
 			path = Views;
@@ -186,12 +189,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E31108BE259AB39D00C1C4CB /* Build configuration list for PBXNativeTarget "Wild Route" */;
 			buildPhases = (
-				2E3F66DB316F72E9B4C71022 /* [CP] Check Pods Manifest.lock */,
+				33C73BB77A8313CE8FD4A4BF /* [CP] Check Pods Manifest.lock */,
 				E31108AB259AB39A00C1C4CB /* Sources */,
 				E31108AC259AB39A00C1C4CB /* Frameworks */,
 				E31108AD259AB39A00C1C4CB /* Resources */,
 				E321240225B75FEB00BBCA89 /* Embed Frameworks */,
-				13ED45D1C9F9F08E8B214FB8 /* [CP] Embed Pods Frameworks */,
+				3FC59E88A4C47213D099C74A /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -248,24 +251,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		13ED45D1C9F9F08E8B214FB8 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Wild Route/Pods-Wild Route-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Wild Route/Pods-Wild Route-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Wild Route/Pods-Wild Route-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		2E3F66DB316F72E9B4C71022 /* [CP] Check Pods Manifest.lock */ = {
+		33C73BB77A8313CE8FD4A4BF /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -287,6 +273,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		3FC59E88A4C47213D099C74A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Wild Route/Pods-Wild Route-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Wild Route/Pods-Wild Route-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Wild Route/Pods-Wild Route-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -297,6 +300,7 @@
 				E31108B5259AB39A00C1C4CB /* iosMapView.swift in Sources */,
 				E321240625B7602400BBCA89 /* MapBoxMap.swift in Sources */,
 				E31108B3259AB39A00C1C4CB /* Wild_Route.swift in Sources */,
+				E379237E25D0A1F100B3819A /* SearchNearby.swift in Sources */,
 				E3C22DD325CDFA050025332C /* RatingStructure.swift in Sources */,
 				E31108D4259B9B9D00C1C4CB /* FavouritesView.swift in Sources */,
 				E3C22DD525CDFB780025332C /* Rating.swift in Sources */,
@@ -434,7 +438,7 @@
 		};
 		E31108BF259AB39D00C1C4CB /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 706BA6CF71F8DE3CEEC0E90C /* Pods-Wild Route.debug.xcconfig */;
+			baseConfigurationReference = EF3167E4F0676197A4835CE3 /* Pods-Wild Route.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -463,7 +467,7 @@
 		};
 		E31108C0259AB39D00C1C4CB /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C26D9CDE120460E537BD323E /* Pods-Wild Route.release.xcconfig */;
+			baseConfigurationReference = 09D537B02272FCA007104741 /* Pods-Wild Route.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

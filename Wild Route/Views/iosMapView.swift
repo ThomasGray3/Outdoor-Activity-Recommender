@@ -7,6 +7,7 @@
 import SwiftUI
 import Combine
 import Mapbox
+import MapKit
 
 struct iosMapView: View {
     
@@ -14,24 +15,31 @@ struct iosMapView: View {
     @State private var position = CardPosition.top
     @State private var background = BackgroundStyle.blur
     @ObservedObject var locationManager = LocationManager()
-    var userLatitude: Double {
-        return locationManager.lastLocation?.coordinate.latitude ?? 0
-    }
+    @State var userLatitude = 0.0
+    @State var userLongitude = 0.0
     
-    var userLongitude: Double {
-        return locationManager.lastLocation?.coordinate.longitude ?? 0
+    
+    @ObservedObject var annotationsVM = AnnotationsVM()
+    
+    
+    func staticlocation() {
+        userLatitude = locationManager.location?.coordinate.latitude ?? 0.0
+        userLongitude = locationManager.location?.coordinate.longitude ?? 0.0
+        return
     }
     
     var body: some View {
         NavigationView {
             VStack{
                 ZStack{
-                    MapView().zoomLevel(5).centerCoordinate(.init(latitude: userLatitude, longitude: userLongitude)).userLoc(true).styleURL(URL(string: "mapbox://styles/mapbox/outdoors-v11")!).edgesIgnoringSafeArea(.top)
+                    MapView(annos: $annotationsVM.annos).zoomLevel(5).centerCoordinate(.init(latitude: userLatitude, longitude: userLongitude)).userLoc(true).styleURL(URL(string: "mapbox://styles/mapbox/outdoors-v11")!).edgesIgnoringSafeArea(.top)
                     VStack{
                         Spacer()
                         if loaded == false {
                             Button(action: {
+                                staticlocation()
                                 loaded = true
+                                annotationsVM.addNextAnnotation()
                             }) {
                                 Text("Find Acitvities")
                                     .font(.system(size: 20, weight: .heavy, design: .default))
@@ -60,7 +68,9 @@ struct iosMapView: View {
                                     .padding()
                                     .shadow(color: Color.black.opacity(0.3), radius: 3, x: 3, y: 3)
                                 }
-                                SkiResorts(lat: userLatitude, lon: userLongitude)
+                               // SearchNearby(lat: 56.667330664, lon: -4.091999632)
+                                SearchNearby(lat: userLatitude, lon: userLongitude)
+                                //SkiResorts(lat: userLatitude, lon: userLongitude)
                             
                             }
                         }
@@ -70,6 +80,7 @@ struct iosMapView: View {
             //.navigationBarTitleDisplayMode(.large)
             //.navigationTitle(Text("Explore"))
         }
+        
     }
 }
 
