@@ -10,7 +10,6 @@ import SwiftUI
 struct RatingsView: View {
     
     @ObservedObject var rating = RatingStructure()
-    
     var body: some View {
         NavigationView {
             List(rating.ratings) { item in

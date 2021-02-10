@@ -99,25 +99,13 @@ struct MapView: UIViewRepresentable {
 class AnnotationsVM: ObservableObject {
     @Published var annos = [MGLPointAnnotation]()
 
-        init() {
-            var annotation = MGLPointAnnotation()
-            annotation.title = "Apple Store"
-            annotation.coordinate = CLLocationCoordinate2D(latitude: 40.77, longitude: -73.98)
-            annotation.subtitle = "Think Different"
-            annos.append(annotation)
-
-            annotation = MGLPointAnnotation()
-            annotation.title = "Shoe Store"
-            annotation.coordinate = CLLocationCoordinate2D(latitude: 40.78, longitude: -73.98)
-            annotation.subtitle = "Shoe Different"
-            annos.append(annotation)
+    func addNextAnnotation(annotation: [MGLPointAnnotation]) {
+        for anno in annotation {
+            annos.append(anno)
         }
-
-        func addNextAnnotation() {
-            let newAnnotation = MGLPointAnnotation()
-            newAnnotation.title = "New Annotation"
-            newAnnotation.coordinate = CLLocationCoordinate2D(latitude: 40.763783, longitude: -73.973133)
-            newAnnotation.subtitle = "Ben Button"
-            annos.append(newAnnotation)
+    }
+    
+    func deleteAnnos() {
+        annos.removeAll()
     }
 }

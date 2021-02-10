@@ -9,6 +9,15 @@ import Foundation
 import FirebaseFirestore
 import FirebaseFirestoreSwift
 
+struct Rating: Codable, Identifiable {
+    @DocumentID var id: String?
+    var location: String
+    var user: String
+    var score: Int
+    @ServerTimestamp var timeCreated: Timestamp?
+}
+
+
 class RatingStructure: ObservableObject {
     
     let db = Firestore.firestore()

@@ -17,15 +17,24 @@ struct iosMapView: View {
     @ObservedObject var locationManager = LocationManager()
     @State var userLatitude = 0.0
     @State var userLongitude = 0.0
-    
-    
+    @State var annotations = [MGLPointAnnotation]()
+    @State var places = [Landmark]()
     @ObservedObject var annotationsVM = AnnotationsVM()
     
-    
-    func staticlocation() {
+    func getLocations() {
         userLatitude = locationManager.location?.coordinate.latitude ?? 0.0
         userLongitude = locationManager.location?.coordinate.longitude ?? 0.0
-        return
+        LandmarkStruct().searchNearby(userLatitude: userLatitude, userLongitude: userLongitude, completion: { points in
+            for loc in points {
+                let annotation = MGLPointAnnotation()
+                annotation.title = loc.name
+                annotation.coordinate = loc.coordinate
+                annotation.subtitle = loc.title
+                annotations.append(annotation)
+            }
+            places = points
+            annotationsVM.addNextAnnotation(annotation: annotations)
+        })
     }
     
     var body: some View {
@@ -37,9 +46,8 @@ struct iosMapView: View {
                         Spacer()
                         if loaded == false {
                             Button(action: {
-                                staticlocation()
+                                getLocations()
                                 loaded = true
-                                annotationsVM.addNextAnnotation()
                             }) {
                                 Text("Find Acitvities")
                                     .font(.system(size: 20, weight: .heavy, design: .default))
@@ -57,6 +65,7 @@ struct iosMapView: View {
                                     Spacer()
                                     Button(action: {
                                         loaded = false
+                                        annotationsVM.deleteAnnos()
                                     }, label: {
                                         Image(systemName: "plus")
                                             .rotationEffect(.init(degrees: 45))
@@ -68,8 +77,7 @@ struct iosMapView: View {
                                     .padding()
                                     .shadow(color: Color.black.opacity(0.3), radius: 3, x: 3, y: 3)
                                 }
-                               // SearchNearby(lat: 56.667330664, lon: -4.091999632)
-                                SearchNearby(lat: userLatitude, lon: userLongitude)
+                                DisplaySearch(places: places)
                                 //SkiResorts(lat: userLatitude, lon: userLongitude)
                             
                             }
