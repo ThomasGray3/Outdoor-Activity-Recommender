@@ -76,6 +76,7 @@ struct MapView: UIViewRepresentable {
               }
         
         func mapView(_ mapView: MGLMapView, viewFor annotation: MGLAnnotation) -> MGLAnnotationView? {
+           
             return nil
         }
          

@@ -45,26 +45,25 @@ struct SkiResorts: View {
     @State private var background = BackgroundStyle.blur
     
     var body: some View {
-      
-            Form{
-                Section {
-                    ForEach(0..<skiData.count, id: \.self ) { j in
-                        NavigationLink(
-                            destination: ActivityCard(),
-                            label: {
-                                Text(skiData[j].areaName[0].value)
-                                
-                            }
-                        )
-                    }
+        Form {
+            
+            Section {
+                ForEach(0..<skiData.count, id: \.self ) { j in
+                    NavigationLink(
+                        destination: ActivityCard(),
+                        label: {
+                            Text(skiData[j].areaName[0].value)
+                        }
+                    )
                 }
             }
-            .background(Color.clear)
-    
-            .onAppear(perform: {
-                loadData()
-                UITableView.appearance().backgroundColor = .clear
-            })
+        }
+        .background(Color.clear)
+        
+        .onAppear(perform: {
+            loadData()
+            UITableView.appearance().backgroundColor = .clear
+        })
     }
     
     func loadData() {

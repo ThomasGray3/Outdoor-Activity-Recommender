@@ -18,19 +18,23 @@ struct iosMapView: View {
     @State var userLatitude = 0.0
     @State var userLongitude = 0.0
     @State var annotations = [MGLPointAnnotation]()
-    @State var places = [Landmark]()
+    @State private var places = [[Landmark]]()
     @ObservedObject var annotationsVM = AnnotationsVM()
     
     func getLocations() {
         userLatitude = locationManager.location?.coordinate.latitude ?? 0.0
         userLongitude = locationManager.location?.coordinate.longitude ?? 0.0
         LandmarkStruct().searchNearby(userLatitude: userLatitude, userLongitude: userLongitude, completion: { points in
-            for loc in points {
-                let annotation = MGLPointAnnotation()
-                annotation.title = loc.name
-                annotation.coordinate = loc.coordinate
-                annotation.subtitle = loc.title
-                annotations.append(annotation)
+            places.removeAll()
+            annotations.removeAll()
+            for type in points {
+                for location in type {
+                    let annotation = MGLPointAnnotation()
+                    annotation.title = location.name
+                    annotation.coordinate = location.coordinate
+                    annotation.subtitle = location.title
+                    annotations.append(annotation)
+                }
             }
             places = points
             annotationsVM.addNextAnnotation(annotation: annotations)
@@ -77,9 +81,12 @@ struct iosMapView: View {
                                     .padding()
                                     .shadow(color: Color.black.opacity(0.3), radius: 3, x: 3, y: 3)
                                 }
-                                DisplaySearch(places: places)
-                                //SkiResorts(lat: userLatitude, lon: userLongitude)
-                            
+                               
+                                        DisplaySearch(places: places)
+                 
+                                    
+                                
+                               // SkiResorts(lat: userLatitude, lon: userLongitude)
                             }
                         }
                     }
