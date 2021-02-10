@@ -33,38 +33,32 @@ struct Landmark {
 
 class LandmarkStruct: ObservableObject {
     
-    func searchNearby(userLatitude: Double, userLongitude: Double, completion: @escaping ([[Landmark]])->()) {
+    func searchNearby(userLatitude: Double, userLongitude: Double, type: String, completion: @escaping ([Landmark])->()) {
         
-       
-        var placesArray = [[Landmark]]()
-        var searchArray = [String]()
-        searchArray = ["Mountains", "National Parks", "Beaches"]
-        for counter in 0..<searchArray.count {
-            var places = [Landmark]()
-            let request = MKLocalSearch.Request()
-            //print("search req \(searchArray[counter])")
-            request.naturalLanguageQuery = searchArray[counter]
-            request.region =  MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: userLatitude, longitude: userLongitude), span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05))
-            let search = MKLocalSearch(request: request)
-            
-            search.start { (response, error) in
-                if let response = response {
-                   
-                    var mapItems = response.mapItems
-                    
-                    if mapItems.count > 5 {
-                        mapItems = mapItems.dropLast(mapItems.count-5)
-                    }
-                    places = mapItems.map {
-                        return Landmark(placemark: $0.placemark, type: searchArray[counter])
-                    }
-                    
-                    placesArray.append(places)
-                    if counter == searchArray.count - 1 {
-                        completion(placesArray)
-                    }
-                }
+        
+        
+        var places = [Landmark]()
+        let request = MKLocalSearch.Request()
+        //print("search req \(searchArray[counter])")
+        request.naturalLanguageQuery = type
+        request.region =  MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: userLatitude, longitude: userLongitude), span: MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5))
+        let search = MKLocalSearch(request: request)
+        
+        search.start { (response, error) in
+            guard let response = response else {
+                return
             }
+            search.cancel()
+            var mapItems = response.mapItems
+            
+            if mapItems.count > 5 {
+                mapItems = mapItems.dropLast(mapItems.count-5)
+            }
+            places = mapItems.map {
+                return Landmark(placemark: $0.placemark, type: type)
+            }
+            completion(places)
+            
         }
     }
 }

@@ -46,7 +46,6 @@ struct DisplaySearch: View {
                         }
                         //.listRowBackground(changeBkColor(type: places[place][0].type))
                     }
-                    ExDivider(color: changeBkColor(type: places[place][0].type))
                 } 
             }
         }

@@ -75,12 +75,18 @@ struct MapView: UIViewRepresentable {
                   self.mapView = mapView
               }
         
+        func mapView(_ mapView: MGLMapView, didFinishLoading style: MGLStyle) {
+            
+            return
+        }
+        
         func mapView(_ mapView: MGLMapView, viewFor annotation: MGLAnnotation) -> MGLAnnotationView? {
-           
+          
             return nil
         }
-         
+        
         func mapView(_ mapView: MGLMapView, annotationCanShowCallout annotation: MGLAnnotation) -> Bool {
+            
             return true
         }
         
@@ -88,6 +94,7 @@ struct MapView: UIViewRepresentable {
                    if annotation.title == "Mapbox" {
                        mapView.styleURL = MGLStyle.lightStyleURL
             }
+        
         }
         func mapView(_ mapView: MGLMapView, didDeselect annotation: MGLAnnotation) {
             if annotation.title == "Mapbox" {
