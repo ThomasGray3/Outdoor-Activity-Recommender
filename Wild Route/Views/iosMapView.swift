@@ -8,6 +8,7 @@ import SwiftUI
 import Combine
 import Mapbox
 import MapKit
+import Drawer
 
 struct iosMapView: View {
     
@@ -26,8 +27,8 @@ struct iosMapView: View {
     func getLocations() {
         userLatitude = locationManager.location?.coordinate.latitude ?? 0.0
         userLongitude = locationManager.location?.coordinate.longitude ?? 0.0
-        places.removeAll()
-        annotations.removeAll()
+       // places.removeAll()
+       // annotations.removeAll()
         let searchType = ["Mountains", "National Parks", "Beaches"]
         for n in 0..<searchType.count {
             LandmarkStruct().searchNearby(userLatitude: userLatitude, userLongitude: userLongitude, type: searchType[n], completion: { points in
@@ -67,6 +68,8 @@ struct iosMapView: View {
                         }
                     }
                     if clicked == true {
+                        
+                        
                         SlideOverCard($position, backgroundStyle: $background) {
                             VStack {
                                 HStack {
@@ -96,7 +99,12 @@ struct iosMapView: View {
                                 }
                                 // SkiResorts(lat: userLatitude, lon: userLongitude)
                             }
-                        }
+                        }.onDisappear(perform: {
+                            clicked = false
+                            annotationsVM.deleteAnnos()
+                            places.removeAll()
+                            loaded = false
+                        })
                     }
                 }
             }

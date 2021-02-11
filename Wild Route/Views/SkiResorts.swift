@@ -42,7 +42,7 @@ struct SkiResorts: View {
     var lon: Double
     
     @State private var skiData = [Result]()
-    @State private var background = BackgroundStyle.blur
+   // @State private var background = BackgroundStyle.blur
     
     var body: some View {
         Form {
