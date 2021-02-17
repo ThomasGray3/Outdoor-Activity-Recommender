@@ -8,21 +8,20 @@ import SwiftUI
 import Combine
 import Mapbox
 import MapKit
-import Drawer
 
 struct iosMapView: View {
     
     @State  private var clicked = false
     @State  private var loaded = false
-    @State private var position = CardPosition.middle
-    @State private var background = BackgroundStyle.blur
+ //   @State private var position = CardPosition.middle
+ //   @State private var background = BackgroundStyle.blur
     @ObservedObject var locationManager = LocationManager()
     @State var userLatitude = 0.0
     @State var userLongitude = 0.0
     @State var annotations = [MGLPointAnnotation]()
     @State private var places = [[Landmark]]()
     @ObservedObject var annotationsVM = AnnotationsVM()
-    @State var serialQueue = DispatchQueue(label: "load")
+    let group = DispatchGroup()
     
     func getLocations() {
         userLatitude = locationManager.location?.coordinate.latitude ?? 0.0
@@ -30,7 +29,9 @@ struct iosMapView: View {
        // places.removeAll()
        // annotations.removeAll()
         let searchType = ["Mountains", "National Parks", "Beaches"]
+        
         for n in 0..<searchType.count {
+            group.enter()
             LandmarkStruct().searchNearby(userLatitude: userLatitude, userLongitude: userLongitude, type: searchType[n], completion: { points in
                 places.append(points)
                 for location in points {
@@ -40,77 +41,90 @@ struct iosMapView: View {
                     annotation.subtitle = location.title
                     annotations.append(annotation)
                 }
-                annotationsVM.addNextAnnotation(annotation: annotations)
+                group.leave()
             })
         }
     }
     
     var body: some View {
+        
         NavigationView {
             VStack{
                 ZStack{
-                    MapView(annos: $annotationsVM.annos).zoomLevel(5).centerCoordinate(.init(latitude: userLatitude, longitude: userLongitude)).userLoc(true).styleURL(URL(string: "mapbox://styles/mapbox/outdoors-v11")!).edgesIgnoringSafeArea(.top)
+                    MapView(annos: $annotationsVM.annos).zoomLevel(5).centerCoordinate(.init(latitude: userLatitude, longitude: userLongitude)).userLoc(true).styleURL(URL(string: "mapbox://styles/mapbox/outdoors-v11")!)
+                    if clicked == true && loaded == false {
+                        Blur()
+                            .frame(width:  UIScreen.main.bounds.width, height:  UIScreen.main.bounds.height)
+                            .edgesIgnoringSafeArea(.top)
+                        }
                     VStack{
                         Spacer()
                         if clicked == false {
                             Button(action: {
                                 clicked = true
                                 getLocations()
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                                group.notify(queue: .main) {
+                               
+                                
+                                    annotationsVM.addNextAnnotation(annotation: annotations)
                                     loaded = true
                                 }
                             }) {
                                 Text("Find Acitvities")
-                                    .font(.system(size: 20, weight: .heavy, design: .default))
+                                    .font(.system(size: 28, weight: .heavy, design: .default))
                             }
                             .buttonStyle(GradientButtonStyle())
-                            .offset(x: 0.0, y: -20.0)
+                            .offset(x: 0.0, y: -30.0)
+                            .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/, 30)
                         }
                     }
                     if clicked == true {
-                        
-                        
-                        SlideOverCard($position, backgroundStyle: $background) {
-                            VStack {
-                                HStack {
-                                    Text("Activities for you, near you...")
-                                        .padding()
-                                    Spacer()
-                                    Button(action: {
-                                        clicked = false
-                                        annotationsVM.deleteAnnos()
-                                        loaded = false
-                                    }, label: {
-                                        Image(systemName: "plus")
-                                            .rotationEffect(.init(degrees: 45))
-                                            .frame(width: 30, height: 30)
-                                            .foregroundColor(Color.white)
-                                    })
-                                    .background(LinearGradient(gradient: Gradient(colors: [Color.green, Color.blue]), startPoint: .leading, endPoint: .trailing))
-                                    .cornerRadius(38.5)
-                                    .padding()
-                                    .shadow(color: Color.black.opacity(0.3), radius: 3, x: 3, y: 3)
+                        if loaded == true {
+                                SlideOverCard() {
+                                    VStack {
+                                        HStack {
+                                            Text("Activities for you, near you...")
+                                                .padding(.all)
+                                            Spacer()
+                                            Button(action: {
+                                                clicked = false
+                                                annotationsVM.deleteAnnos()
+                                                places.removeAll()
+                                                loaded = false
+                                            }, label: {
+                                                Image(systemName: "plus")
+                                                    .rotationEffect(.init(degrees: 45))
+                                                    .frame(width: 35, height: 35)
+                                                    .foregroundColor(Color.white)
+                                            })
+                                            .background(LinearGradient(gradient: Gradient(colors: [Color.green, Color.blue]), startPoint: .leading, endPoint: .trailing))
+                                            .cornerRadius(38.5)
+                                            .padding()
+                                            .shadow(color: Color.black.opacity(0.3), radius: 3, x: 3, y: 3)
+                                        }
+                                       // if loaded == true {
+                                            
+                                            DisplaySearch(places: places)
+                                    }
                                 }
-                                if loaded == true {
-                                    
-                                    DisplaySearch(places: places)
-                                } else if loaded == false {
+                        } else if loaded == false {
                                     loadAnnimation().padding()
-                                }
+                                
                                 // SkiResorts(lat: userLatitude, lon: userLongitude)
-                            }
-                        }.onDisappear(perform: {
-                            clicked = false
-                            annotationsVM.deleteAnnos()
-                            places.removeAll()
-                            loaded = false
-                        })
+                            
+                        }
                     }
                 }
             }
+            .navigationBarHidden(true)
             //.navigationBarTitleDisplayMode(.large)
             //.navigationTitle(Text("Explore"))
-        }
+        }.onDisappear(perform: {
+            clicked = false
+            annotationsVM.deleteAnnos()
+            places.removeAll()
+            loaded = false
+        })
         
     }
 }
@@ -166,22 +180,36 @@ struct loadAnnimation: View {
         ZStack {
             
             Text("Loading...")
-                .font(.system(.body, design: .rounded))
+                .font(.system(size: 30, design: .rounded))
                 .bold()
-                .offset(x: 0, y: -25)
+               
+                .offset(x: 0, y: -35)
             
-            RoundedRectangle(cornerRadius: 3)
-                .stroke(Color(.systemGray5), lineWidth: 3)
-                .frame(width: 250, height: 3)
+            RoundedRectangle(cornerRadius: 5)
+                .stroke(Color(.systemGray6), lineWidth: 5)
+                .frame(width: 250, height: 5)
+                .shadow(color: Color.black.opacity(0.2), radius: 3, x: 3, y: 3)
             
-            RoundedRectangle(cornerRadius: 3)
-                .stroke(Color.green, lineWidth: 3)
-                .frame(width: 30, height: 3)
+            RoundedRectangle(cornerRadius: 5)
+                .stroke(Color.green, lineWidth: 5)
+                .frame(width: 30, height: 5)
                 .offset(x: isLoading ? 110 : -110, y: 0)
                 .animation(Animation.linear(duration: 1).repeatForever(autoreverses: false))
         }
         .onAppear() {
             self.isLoading = true
         }
+    }
+}
+
+struct Blur: UIViewRepresentable {
+    let style: UIBlurEffect.Style = .regular
+
+    func makeUIView(context: Context) -> UIVisualEffectView {
+        return UIVisualEffectView(effect: UIBlurEffect(style: style))
+    }
+
+    func updateUIView(_ uiView: UIVisualEffectView, context: Context) {
+        uiView.effect = UIBlurEffect(style: style)
     }
 }

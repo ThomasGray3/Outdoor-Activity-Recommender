@@ -12,10 +12,17 @@ import MapKit
 struct DisplaySearch: View {
     var places: [[Landmark]]
     
+    func printt() {
+//        print(places[0][0].name)
+    }
+    
     var body: some View {
         Form {
             Section {
+                
+              
                 ForEach(0..<places.count, id: \.self) { place in
+                    
                     HStack {
                         Text(places[place][0].type)
                             .fontWeight(.bold)
@@ -32,20 +39,23 @@ struct DisplaySearch: View {
                     ExDivider(color: changeBkColor(type: places[place][0].type))
                     
                     ForEach(self.places[place], id: \.id) { landmark in
-                        VStack(alignment: .leading) {
+                       // VStack(alignment: .leading) {
                             NavigationLink(
                                 destination: ActivityCard(),
                                 label: {
-                                    VStack {
+                                    VStack(alignment: .leading) {
                                         Text(landmark.name)
                                             .fontWeight(.bold)
+                                           
                                         Text(landmark.title)
-                                    }
+                                            .fontWeight(.light)
+                                    } .padding(.vertical)
                                 }
                             )
-                        }
+                        //}
                         //.listRowBackground(changeBkColor(type: places[place][0].type))
                     }
+                    ExDivider(color: changeBkColor(type: places[place][0].type))
                 } 
             }
         }
@@ -53,6 +63,7 @@ struct DisplaySearch: View {
         .onAppear(perform: {
             //    searchNearby()
             UITableView.appearance().backgroundColor = .clear
+            printt()
         })
     }
     

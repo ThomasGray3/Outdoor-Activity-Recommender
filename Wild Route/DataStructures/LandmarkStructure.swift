@@ -57,6 +57,8 @@ class LandmarkStruct: ObservableObject {
             places = mapItems.map {
                 return Landmark(placemark: $0.placemark, type: type)
             }
+            print("......")
+            print(places)
             completion(places)
             
         }

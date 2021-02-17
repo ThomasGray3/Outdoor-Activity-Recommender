@@ -28,7 +28,6 @@
 		E379237E25D0A1F100B3819A /* DisplaySearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = E379237D25D0A1F100B3819A /* DisplaySearch.swift */; };
 		E379238125D181DF00B3819A /* MapboxMobileEvents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E379237F25D181D300B3819A /* MapboxMobileEvents.framework */; };
 		E379238225D181DF00B3819A /* MapboxMobileEvents.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E379237F25D181D300B3819A /* MapboxMobileEvents.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		E3983AE125D4B2C200DC9149 /* Drawer in Frameworks */ = {isa = PBXBuildFile; productRef = E3983AE025D4B2C200DC9149 /* Drawer */; };
 		E3C22DA825CCC8710025332C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E3C22DA725CCC8710025332C /* GoogleService-Info.plist */; };
 		E3C22DD325CDFA050025332C /* RatingStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C22DD225CDFA050025332C /* RatingStructure.swift */; };
 		E3CCA1A225AF2F4D00917E16 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3CCA1A125AF2F4D00917E16 /* Preferences.swift */; };
@@ -88,7 +87,6 @@
 				E379238125D181DF00B3819A /* MapboxMobileEvents.framework in Frameworks */,
 				E321240025B75FEB00BBCA89 /* Mapbox.framework in Frameworks */,
 				3CDC87AFB3286FB9150FA955 /* Pods_Wild_Route.framework in Frameworks */,
-				E3983AE125D4B2C200DC9149 /* Drawer in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -204,7 +202,6 @@
 			);
 			name = "Wild Route";
 			packageProductDependencies = (
-				E3983AE025D4B2C200DC9149 /* Drawer */,
 			);
 			productName = "Outdoor Activity Recommender";
 			productReference = E31108AF259AB39A00C1C4CB /* Wild Route.app */;
@@ -535,14 +532,6 @@
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		E3983AE025D4B2C200DC9149 /* Drawer */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = E3983ADF25D4B2C100DC9149 /* XCRemoteSwiftPackageReference "swiftui-drawer" */;
-			productName = Drawer;
-		};
-/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		E3CCA1A425AF33F000917E16 /* PreferencesData.xcdatamodeld */ = {
