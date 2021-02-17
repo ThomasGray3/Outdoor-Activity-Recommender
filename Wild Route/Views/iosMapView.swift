@@ -64,8 +64,6 @@ struct iosMapView: View {
                                 clicked = true
                                 getLocations()
                                 group.notify(queue: .main) {
-                               
-                                
                                     annotationsVM.addNextAnnotation(annotation: annotations)
                                     loaded = true
                                 }
