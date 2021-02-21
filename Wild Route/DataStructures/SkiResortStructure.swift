@@ -37,38 +37,11 @@ struct AreaName: Codable {
     let value: String
 }
 
-struct SkiResorts: View {
-    var lat: Double
-    var lon: Double
+class SkiResorts {
     
-    @State private var skiData = [Result]()
-   // @State private var background = BackgroundStyle.blur
-    
-    var body: some View {
-        Form {
-            
-            Section {
-                ForEach(0..<skiData.count, id: \.self ) { j in
-                    NavigationLink(
-                        destination: ActivityCard(),
-                        label: {
-                            Text(skiData[j].areaName[0].value)
-                        }
-                    )
-                }
-            }
-        }
-        .background(Color.clear)
-        
-        .onAppear(perform: {
-            loadData()
-            UITableView.appearance().backgroundColor = .clear
-        })
-    }
-    
-    func loadData() {
-        print(lat)
-        print(lon)
+    func skiSearch(lat: Double, lon: Double, completion: @escaping ([Result])->()) {
+        print("here")
+        var skiData = [Result]()
         // Create URL
         let url = URL(string: "https://api.worldweatheronline.com/premium/v1/search.ashx?key=02e686314f7b48a2a75162854212801&q=\(lat),\(lon)&format=json&num_of_results=4&wct=Ski")
         
@@ -82,16 +55,13 @@ struct SkiResorts: View {
         request.httpMethod = "GET"
         // Send HTTP Request
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-            
             guard let data = data else { return }
             // Using parseJSON() function to convert data to Swift struct
             DispatchQueue.main.async {
-                let parsedData = parseJSON(data: data)
-                
-                // Read todo item title
+                let parsedData = self.parseJSON(data: data)
                 guard let parsedModel = parsedData else { return }
-                //print("Todo item title = \(parsedModel.searchAPI.result[1].areaName[0].value)")
-                self.skiData = parsedModel.searchAPI.result
+                skiData = parsedModel.searchAPI.result
+                completion(skiData)
             }
         }
         task.resume()
@@ -103,11 +73,5 @@ struct SkiResorts: View {
             //print(skijson!)
             return skijson
         }
-    }
-}
-
-struct SkiResorts_Previews: PreviewProvider {
-    static var previews: some View {
-        SkiResorts(lat: 0.0, lon: 0.0)
     }
 }

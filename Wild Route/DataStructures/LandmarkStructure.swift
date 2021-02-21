@@ -27,19 +27,15 @@ struct Landmark {
     var coordinate: CLLocationCoordinate2D {
         self.placemark.coordinate
     }
-    
     var type: String
 }
 
-class LandmarkStruct: ObservableObject {
+class LandmarkStruct {
     
     func searchNearby(userLatitude: Double, userLongitude: Double, type: String, completion: @escaping ([Landmark])->()) {
         
-        
-        
         var places = [Landmark]()
         let request = MKLocalSearch.Request()
-        //print("search req \(searchArray[counter])")
         request.naturalLanguageQuery = type
         request.region =  MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: userLatitude, longitude: userLongitude), span: MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5))
         let search = MKLocalSearch(request: request)
@@ -57,10 +53,7 @@ class LandmarkStruct: ObservableObject {
             places = mapItems.map {
                 return Landmark(placemark: $0.placemark, type: type)
             }
-            print("......")
-            print(places)
             completion(places)
-            
         }
     }
 }

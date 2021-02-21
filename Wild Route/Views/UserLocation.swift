@@ -15,7 +15,16 @@ class LocationManager: NSObject, ObservableObject {
         self.locationManager.requestWhenInUseAuthorization()
         self.locationManager.startUpdatingLocation()
     }
+    
+    func stop() {
+        self.locationManager.stopUpdatingLocation()
+    }
+    func start() {
+        self.locationManager.startUpdatingLocation()
+    }
 }
+
+
 
 extension LocationManager: CLLocationManagerDelegate {
     
@@ -30,5 +39,4 @@ extension LocationManager: CLLocationManagerDelegate {
         print(#function, location)
         self.location = location
     }
-    
 }

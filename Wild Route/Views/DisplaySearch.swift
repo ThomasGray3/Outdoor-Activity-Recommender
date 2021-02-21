@@ -6,64 +6,75 @@
 //
 import SwiftUI
 import Foundation
-import Mapbox
-import MapKit
 
 struct DisplaySearch: View {
     var places: [[Landmark]]
-    
-    func printt() {
-//        print(places[0][0].name)
-    }
-    
+  //  var skiPlaces: [Result]
     var body: some View {
         Form {
             Section {
-                
-              
-                ForEach(0..<places.count, id: \.self) { place in
-                    
-                    HStack {
-                        Text(places[place][0].type)
-                            .fontWeight(.bold)
-                            .padding()
+                if !places.isEmpty {
+                    ForEach(0..<places.count, id: \.self) { place in
                         
+                        HStack {
+                            Text(places[place][0].type)
+                                .fontWeight(.bold)
+                                .padding()
+                        }
+                        .padding()
                         
-                        Image("\(places[place][0].type)")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit).frame(width: 50, height: 50)
-                    }
-                    .padding()
-                    //.listRowBackground(changeBkColor(type: places[place][0].type))
-                    
-                    ExDivider(color: changeBkColor(type: places[place][0].type))
-                    
-                    ForEach(self.places[place], id: \.id) { landmark in
-                       // VStack(alignment: .leading) {
+                        ExDivider(color: changeBkColor(type: places[place][0].type))
+                        
+                        ForEach(self.places[place], id: \.id) { landmark in
+                            // VStack(alignment: .leading) {
                             NavigationLink(
-                                destination: ActivityCard(),
+                                destination: ActivityCard(landmark: landmark),
                                 label: {
                                     VStack(alignment: .leading) {
                                         Text(landmark.name)
                                             .fontWeight(.bold)
-                                           
-                                        Text(landmark.title)
-                                            .fontWeight(.light)
+                                        
+                                    //    Text(landmark.title)
+                                      //      .fontWeight(.light)
                                     } .padding(.vertical)
                                 }
                             )
-                        //}
-                        //.listRowBackground(changeBkColor(type: places[place][0].type))
+                        }
+                        ExDivider(color: changeBkColor(type: places[place][0].type))
                     }
-                    ExDivider(color: changeBkColor(type: places[place][0].type))
-                } 
+                
+               /* if !skiPlaces.isEmpty {
+                    HStack {
+                        Text("Ski Centres")
+                            .fontWeight(.bold)
+                            .padding()
+                    }
+                    .padding()
+                    ExDivider(color: changeBkColor(type: "Ski Centres"))
+                    ForEach(0..<skiPlaces.count, id: \.self ) { j in
+                        NavigationLink(
+                            destination: ActivityCard(),
+                            label: {
+                                VStack(alignment: .leading) {
+                                    Text(skiPlaces[j].areaName[0].value)
+                                        .fontWeight(.bold)
+                                    
+                                   // Text(skiPlaces[j].country[0].value)
+                                   //     .fontWeight(.light)
+                                } .padding(.vertical)
+                            }
+                        )
+                    }
+                    ExDivider(color: changeBkColor(type: "Ski Centres"))*/
+                } else {
+                    Text("There is nothing in your area :(")
+                }
             }
         }
         .background(Color.clear)
         .onAppear(perform: {
             //    searchNearby()
             UITableView.appearance().backgroundColor = .clear
-            printt()
         })
     }
     
@@ -80,6 +91,10 @@ struct DisplaySearch: View {
         else if(type == "National Parks")
         {
             return Color.orange;
+        }
+        else if(type == "Ski Centres")
+        {
+            return Color.white;
         }
         return Color.white
     }

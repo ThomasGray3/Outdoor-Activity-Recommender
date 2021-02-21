@@ -6,15 +6,35 @@
 //
 
 import SwiftUI
+import Mapbox
 
 struct ActivityCard: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+    var landmark: Landmark
+    @ObservedObject var annotationsVM = AnnotationsVM()
+    @State var annotations = [MGLPointAnnotation]()
+    
+    func setUp() {
+        let annotation = MGLPointAnnotation()
+        annotation.title = landmark.name
+        annotation.coordinate = landmark.coordinate
+        annotation.subtitle = landmark.type
+        annotations.append(annotation)
     }
-}
-
-struct ActivityCard_Previews: PreviewProvider {
-    static var previews: some View {
-        ActivityCard()
+    
+    var body: some View {
+        VStack(alignment: .leading) {
+            HStack {
+                Text(landmark.name).font(.system(size: 40, weight: .heavy)).padding(.leading, 20)
+                Spacer()
+                Image(systemName: "heart").font(.system(size: 35)).padding(.trailing, 20)
+            }
+            MapView(annos: $annotations).zoomLevel(11).centerCoordinate(landmark.coordinate).userLoc(false).styleURL(URL(string: "mapbox://styles/mapbox/outdoors-v11")!).frame(width: UIScreen.main.bounds.width, height: 250)
+            Text("ratings here").padding(.leading, 20)
+            Text("weather").padding(.leading, 20)
+            WeatherView(lat: landmark.coordinate.latitude, lon: landmark.coordinate.longitude)
+            Spacer()
+        }.onAppear() {
+            setUp()
+        }
     }
 }

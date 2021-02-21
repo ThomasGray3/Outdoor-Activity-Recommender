@@ -11,6 +11,7 @@ extension MGLPointAnnotation {
 
 struct MapView: UIViewRepresentable {
     @Binding var annos: [MGLPointAnnotation]
+   
     
     private let mapView: MGLMapView = MGLMapView(frame: .zero, styleURL: MGLStyle.outdoorsStyleURL(withVersion: 11))
     
@@ -22,15 +23,18 @@ struct MapView: UIViewRepresentable {
     }
     
     func updateUIView(_ uiView: MGLMapView, context: Context) {
-            updateAnnotations(uiView)
-    
+        updateAnnotations(uiView)
+        
     }
-
+    
     private func updateAnnotations(_ view: MGLMapView) {
-            if let currentAnnotations = view.annotations {
-                view.removeAnnotations(currentAnnotations)
-            }
-            view.addAnnotations(annos)
+        if let currentAnnotations = view.annotations {
+            view.removeAnnotations(currentAnnotations)
+        }
+        
+        view.addAnnotations(annos)
+       
+      
     }
     
     func makeCoordinator() -> MapView.Coordinator {
@@ -53,6 +57,7 @@ struct MapView: UIViewRepresentable {
         if userLocation == true {
             mapView.showsUserLocation = userLocation
             mapView.setUserTrackingMode(.follow, animated: true, completionHandler: nil)
+            
         }
         return self
     }
@@ -63,26 +68,58 @@ struct MapView: UIViewRepresentable {
     }
     
     
+    
     // MARK: - Implementing MGLMapViewDelegate
     
     final class Coordinator: NSObject, MGLMapViewDelegate {
         var control: MapView
         var mapView: MGLMapView!
         var annos = [MGLPointAnnotation]()
+        @State var box = false
+
         
         init(_ control: MapView, _ mapView: MGLMapView) {
-                  self.control = control
-                  self.mapView = mapView
-              }
+            self.control = control
+            self.mapView = mapView
+        }
         
         func mapView(_ mapView: MGLMapView, didFinishLoading style: MGLStyle) {
-            
+        
             return
         }
         
+        
+        func showAllAnnotations() {
+            guard let annotations = mapView.annotations else { return }
+            mapView.showAnnotations(annotations, animated: true)
+            box = true
+        }
+        
         func mapView(_ mapView: MGLMapView, viewFor annotation: MGLAnnotation) -> MGLAnnotationView? {
-          
-            return nil
+            // This example is only concerned with point annotations.
+            if box == false {
+                showAllAnnotations()
+            }
+            guard annotation is MGLPointAnnotation else {
+                return nil
+            }
+            
+            // Use the point annotation’s longitude value (as a string) as the reuse identifier for its view.
+            let reuseIdentifier = "\(annotation.coordinate.longitude)"
+            
+            // For better performance, always try to reuse existing annotations.
+            var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseIdentifier)
+            
+            // If there’s no reusable annotation view available, initialize a new one.
+            if annotationView == nil {
+                annotationView = CustomAnnotationView(reuseIdentifier: reuseIdentifier)
+                annotationView!.bounds = CGRect(x: 0, y: 0, width: 20, height: 20)
+                
+                // Set the annotation view’s background color to a value determined by its longitude.
+               
+            }
+            
+            return annotationView
         }
         
         func mapView(_ mapView: MGLMapView, annotationCanShowCallout annotation: MGLAnnotation) -> Bool {
@@ -91,10 +128,10 @@ struct MapView: UIViewRepresentable {
         }
         
         func mapView(_ mapView: MGLMapView, didSelect annotation: MGLAnnotation) {
-                   if annotation.title == "Mapbox" {
-                       mapView.styleURL = MGLStyle.lightStyleURL
+            if annotation.title == "Mapbox" {
+                mapView.styleURL = MGLStyle.lightStyleURL
             }
-        
+           
         }
         func mapView(_ mapView: MGLMapView, didDeselect annotation: MGLAnnotation) {
             if annotation.title == "Mapbox" {
@@ -106,7 +143,7 @@ struct MapView: UIViewRepresentable {
 
 class AnnotationsVM: ObservableObject {
     @Published var annos = [MGLPointAnnotation]()
-
+    
     func addNextAnnotation(annotation: [MGLPointAnnotation]) {
         for anno in annotation {
             annos.append(anno)
@@ -115,5 +152,36 @@ class AnnotationsVM: ObservableObject {
     
     func deleteAnnos() {
         annos.removeAll()
+    }
+}
+
+
+class CustomAnnotationView: MGLAnnotationView {
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        layer.cornerRadius = bounds.width / 2
+        layer.borderWidth = 2
+        layer.borderColor = UIColor.white.cgColor
+        if annotation?.subtitle == "Mountains" {
+            layer.backgroundColor = UIColor(red: 107/255, green: 239/255, blue: 98/255, alpha: 1.0).cgColor
+        } else if annotation?.subtitle == "Beaches" {
+            layer.backgroundColor = UIColor(red: 99/255, green: 225/255, blue: 242/255, alpha: 1.0).cgColor
+        } else if annotation?.subtitle == "National Parks" {
+            layer.backgroundColor = UIColor(red: 255/255, green: 194/255, blue: 104/255, alpha: 1.0).cgColor
+        } else if annotation?.subtitle == "Ski Centre" {
+            layer.backgroundColor = UIColor.lightGray.cgColor
+        } else {
+            layer.backgroundColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1.0).cgColor
+        }
+    }
+    
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+        
+        // Animate the border width in/out, creating an iris effect.
+        let animation = CABasicAnimation(keyPath: "borderWidth")
+        animation.duration = 0.1
+        layer.borderWidth = selected ? bounds.width / 4 : 2
+        layer.add(animation, forKey: "borderWidth")
     }
 }

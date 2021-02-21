@@ -19,8 +19,9 @@
 		E321240125B75FEB00BBCA89 /* Mapbox.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E32123FB25B75E7D00BBCA89 /* Mapbox.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E321240625B7602400BBCA89 /* MapBoxMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = E321240525B7602400BBCA89 /* MapBoxMap.swift */; };
 		E321244F25BC681500BBCA89 /* SlideOverCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E321244E25BC681400BBCA89 /* SlideOverCard.swift */; };
+		E34DD74A25E2FCCB002B81C6 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34DD74925E2FCCB002B81C6 /* Weather.swift */; };
 		E350B99B25D3630E001BD6F9 /* LandmarkStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = E350B99A25D3630E001BD6F9 /* LandmarkStructure.swift */; };
-		E35549DD25C8237300066769 /* SkiResorts.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35549DC25C8237300066769 /* SkiResorts.swift */; };
+		E35549DD25C8237300066769 /* SkiResortStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35549DC25C8237300066769 /* SkiResortStructure.swift */; };
 		E35549DF25C899AD00066769 /* ActivityCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35549DE25C899AD00066769 /* ActivityCard.swift */; };
 		E35549E125C989B200066769 /* UserLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35549E025C989B100066769 /* UserLocation.swift */; };
 		E3737E7325AF60A1005B98FF /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3737E7225AF60A1005B98FF /* Persistence.swift */; };
@@ -64,8 +65,9 @@
 		E32123FB25B75E7D00BBCA89 /* Mapbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Mapbox.framework; sourceTree = "<group>"; };
 		E321240525B7602400BBCA89 /* MapBoxMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapBoxMap.swift; sourceTree = "<group>"; };
 		E321244E25BC681400BBCA89 /* SlideOverCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideOverCard.swift; sourceTree = "<group>"; };
+		E34DD74925E2FCCB002B81C6 /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		E350B99A25D3630E001BD6F9 /* LandmarkStructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkStructure.swift; sourceTree = "<group>"; };
-		E35549DC25C8237300066769 /* SkiResorts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkiResorts.swift; sourceTree = "<group>"; };
+		E35549DC25C8237300066769 /* SkiResortStructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkiResortStructure.swift; sourceTree = "<group>"; };
 		E35549DE25C899AD00066769 /* ActivityCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityCard.swift; sourceTree = "<group>"; };
 		E35549E025C989B100066769 /* UserLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocation.swift; sourceTree = "<group>"; };
 		E3737E7225AF60A1005B98FF /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
@@ -165,7 +167,6 @@
 				E3CCA1A125AF2F4D00917E16 /* Preferences.swift */,
 				E321240525B7602400BBCA89 /* MapBoxMap.swift */,
 				E321244E25BC681400BBCA89 /* SlideOverCard.swift */,
-				E35549DC25C8237300066769 /* SkiResorts.swift */,
 				E35549DE25C899AD00066769 /* ActivityCard.swift */,
 				E379237D25D0A1F100B3819A /* DisplaySearch.swift */,
 				E35549E025C989B100066769 /* UserLocation.swift */,
@@ -178,6 +179,8 @@
 			children = (
 				E3C22DD225CDFA050025332C /* RatingStructure.swift */,
 				E350B99A25D3630E001BD6F9 /* LandmarkStructure.swift */,
+				E35549DC25C8237300066769 /* SkiResortStructure.swift */,
+				E34DD74925E2FCCB002B81C6 /* Weather.swift */,
 			);
 			path = DataStructures;
 			sourceTree = "<group>";
@@ -306,6 +309,7 @@
 				E321240625B7602400BBCA89 /* MapBoxMap.swift in Sources */,
 				E31108B3259AB39A00C1C4CB /* Wild_Route.swift in Sources */,
 				E379237E25D0A1F100B3819A /* DisplaySearch.swift in Sources */,
+				E34DD74A25E2FCCB002B81C6 /* Weather.swift in Sources */,
 				E3C22DD325CDFA050025332C /* RatingStructure.swift in Sources */,
 				E31108D4259B9B9D00C1C4CB /* FavouritesView.swift in Sources */,
 				E321244F25BC681500BBCA89 /* SlideOverCard.swift in Sources */,
@@ -315,7 +319,7 @@
 				E3CCA1A225AF2F4D00917E16 /* Preferences.swift in Sources */,
 				E35549DF25C899AD00066769 /* ActivityCard.swift in Sources */,
 				E3CCA1A625AF33F100917E16 /* PreferencesData.xcdatamodeld in Sources */,
-				E35549DD25C8237300066769 /* SkiResorts.swift in Sources */,
+				E35549DD25C8237300066769 /* SkiResortStructure.swift in Sources */,
 				E3737E7325AF60A1005B98FF /* Persistence.swift in Sources */,
 				E379225825CF05AF00B3819A /* RatingsView.swift in Sources */,
 				E350B99B25D3630E001BD6F9 /* LandmarkStructure.swift in Sources */,
