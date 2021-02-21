@@ -134,10 +134,17 @@ struct WeatherView: View {
     }
     
     func skiSearch(lat: Double, lon: Double) {
-        print("here")
-        print(lat)
+        var keys: NSDictionary?
+        var weatherKey = ""
+        if let path = Bundle.main.path(forResource: "Info", ofType: "plist") {
+                keys = NSDictionary(contentsOfFile: path)
+            }
+           if let dict = keys {
+            weatherKey = dict["WeatherKey"] as! String
+
+           }
         // Create URL
-        let url = URL(string: "https://api.openweathermap.org/data/2.5/onecall?lat=\(lat)&lon=\(lon)&units=metric&exclude=minutely,hourly&APPID=dbf283d4e3f9e558105d7226873e8e20")
+        let url = URL(string: "https://api.openweathermap.org/data/2.5/onecall?lat=\(lat)&lon=\(lon)&units=metric&exclude=minutely,hourly&APPID=\(weatherKey)")
         
         guard let requestUrl = url else {
             print("Invalid URL")
