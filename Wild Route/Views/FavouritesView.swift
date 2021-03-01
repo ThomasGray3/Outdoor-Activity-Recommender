@@ -9,32 +9,38 @@ import SwiftUI
 
 struct FavouritesView: View {
     
-    @State private var favs = ["item 1", "item 2", "item 3"]
+    @State var favourite = RatingStructure()
+    @State var favs = [Favourite]()
+    @State var landmark = LandmarkDB(name: "", description: "", latitude: 0.0, longitude: 0.0, type: "")
+    
     
     var body: some View {
         NavigationView {
             List {
-                ForEach(favs, id: \.self) { favs in
+                ForEach(favs) { favs in
                     NavigationLink(
-                        destination: /*@START_MENU_TOKEN@*/Text("Destination")/*@END_MENU_TOKEN@*/,
-                        label: {
-                            Text(favs)
-                        })
+                        destination:
+                            ActivityCard(landmark: landmark, name: favs.location)
+                    ){
+                            Text(favs.location)
+                    }
                 }
                 .onDelete(perform: delete)
             }
             .navigationBarTitleDisplayMode(.large)
             .navigationBarItems(trailing: EditButton())
             .navigationTitle(Text("Favourites"))
+        }.onAppear {
+            favourite.loadFavs() { (favos) in
+                favs = favos
+            }
         }
     }
-    func delete(at offsets: IndexSet) {
-           favs.remove(atOffsets: offsets)
-       }
-}
-
-struct FavouritesView_Previews: PreviewProvider {
-    static var previews: some View {
-        FavouritesView()
+    func delete(offsets: IndexSet) {
+        guard let index = Array(offsets).first else { return }
+        let f = favs[index]
+        favourite.removeFavourite(fav: f) { (Bool) in
+            return
+        }
     }
 }

@@ -8,64 +8,33 @@ import SwiftUI
 import Foundation
 
 struct DisplaySearch: View {
-    var places: [[Landmark]]
-  //  var skiPlaces: [Result]
+    var places: [[LandmarkDB]]
+    
     var body: some View {
         Form {
             Section {
                 if !places.isEmpty {
                     ForEach(0..<places.count, id: \.self) { place in
-                        
-                        HStack {
-                            Text(places[place][0].type)
+                        VStack {
+                            ExDivider(color: changeBkColor(type: places[place][0].type))
+                            Text(type().activityType(type: places[place][0].type))
                                 .fontWeight(.bold)
                                 .padding()
+                            ExDivider(color: changeBkColor(type: places[place][0].type))
                         }
-                        .padding()
-                        
-                        ExDivider(color: changeBkColor(type: places[place][0].type))
-                        
-                        ForEach(self.places[place], id: \.id) { landmark in
-                            // VStack(alignment: .leading) {
+                        .padding(.vertical)
+                        ForEach(self.places[place], id: \.name) { landmark in
                             NavigationLink(
                                 destination: ActivityCard(landmark: landmark),
                                 label: {
                                     VStack(alignment: .leading) {
                                         Text(landmark.name)
                                             .fontWeight(.bold)
-                                        
-                                    //    Text(landmark.title)
-                                      //      .fontWeight(.light)
                                     } .padding(.vertical)
                                 }
                             )
                         }
-                        ExDivider(color: changeBkColor(type: places[place][0].type))
                     }
-                
-               /* if !skiPlaces.isEmpty {
-                    HStack {
-                        Text("Ski Centres")
-                            .fontWeight(.bold)
-                            .padding()
-                    }
-                    .padding()
-                    ExDivider(color: changeBkColor(type: "Ski Centres"))
-                    ForEach(0..<skiPlaces.count, id: \.self ) { j in
-                        NavigationLink(
-                            destination: ActivityCard(),
-                            label: {
-                                VStack(alignment: .leading) {
-                                    Text(skiPlaces[j].areaName[0].value)
-                                        .fontWeight(.bold)
-                                    
-                                   // Text(skiPlaces[j].country[0].value)
-                                   //     .fontWeight(.light)
-                                } .padding(.vertical)
-                            }
-                        )
-                    }
-                    ExDivider(color: changeBkColor(type: "Ski Centres"))*/
                 } else {
                     Text("There is nothing in your area :(")
                 }
@@ -73,30 +42,33 @@ struct DisplaySearch: View {
         }
         .background(Color.clear)
         .onAppear(perform: {
-            //    searchNearby()
             UITableView.appearance().backgroundColor = .clear
         })
     }
     
-    
     func changeBkColor(type: String) -> Color {
-        if(type == "Mountains")
+        if(type == "Mountain")
         {
             return Color.green;
         }
         else if(type == "Beaches")
         {
-            return Color.blue;
+            return Color(UIColor(red: 99/255, green: 225/255, blue: 242/255, alpha: 1.0).cgColor);
         }
         else if(type == "National Parks")
         {
             return Color.orange;
         }
-        else if(type == "Ski Centres")
+        else if(type == "Ski Resort")
         {
-            return Color.white;
+            return Color(UIColor.lightGray);
         }
-        return Color.white
+        else if(type == "Kayaking")
+        {
+            return Color(UIColor(red: 16/255, green: 0/255, blue: 249/255, alpha: 1.0))
+        } else {
+            return Color.white
+        }
     }
 }
 
@@ -108,5 +80,58 @@ struct ExDivider: View {
             .fill(color)
             .frame(height: width)
             .edgesIgnoringSafeArea(.horizontal)
+    }
+}
+
+
+class type: ObservableObject {
+    
+    func activityType(type: String) -> String {
+        if(type == "Mountain")
+        {
+            return "Hiking";
+        }
+        else if(type == "Beaches")
+        {
+            return "Surfing";
+        }
+        else if(type == "National Parks")
+        {
+            return "Outdoor Exploring";
+        }
+        else if(type == "Ski Resort")
+        {
+            return "Snowsports";
+        }
+        else if(type == "Kayaking")
+        {
+            return "Kayaking";
+        }
+        return "Miscellaneous"
+    }
+    
+    func changeBkColor(type: String) -> Color {
+        if(type == "Mountain")
+        {
+            return Color.green;
+        }
+        else if(type == "Beaches")
+        {
+            return Color(UIColor(red: 99/255, green: 225/255, blue: 242/255, alpha: 1.0).cgColor);
+        }
+        else if(type == "National Parks")
+        {
+            return Color.orange;
+        }
+        else if(type == "Ski Resort")
+        {
+            return Color(UIColor.lightGray);
+        }
+        else if(type == "Kayaking")
+        {
+            return Color(UIColor(red: 16/255, green: 0/255, blue: 249/255, alpha: 1.0))
+        } else {
+            return Color.white
+        }
     }
 }

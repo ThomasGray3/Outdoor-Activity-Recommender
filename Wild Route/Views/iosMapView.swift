@@ -8,47 +8,33 @@ import SwiftUI
 import Mapbox
 
 struct iosMapView: View {
-    
+    @State var userLatitude = 0.0
+    @State var userLongitude = 0.0
     @State  private var clicked = false
     @State  private var loaded = false
     @ObservedObject var locationManager = LocationManager()
-    @State var userLatitude = 0.0
-    @State var userLongitude = 0.0
     @State var annotations = [MGLPointAnnotation]()
-    @State private var places = [[Landmark]]()
-   // @State private var skiPlaces = [Result]()
+    @State private var places = [[LandmarkDB]]()
     @ObservedObject var annotationsVM = AnnotationsVM()
     let group = DispatchGroup()
+    @ObservedObject var monitor = NetworkMonitor()
+    @State var showAlert = false
     
     func getLocations() {
         userLatitude = locationManager.location?.coordinate.latitude ?? 0.0
         userLongitude = locationManager.location?.coordinate.longitude ?? 0.0
         locationManager.stop()
-        let searchType = ["Mountains", "National Parks", "Beaches", "Ski Centre", "Kayaking"]
-       /* group.enter()
-        SkiResorts().skiSearch(lat: userLatitude, lon: userLongitude, completion: { skiResult in
-            for location in skiResult {
-                let annotation = MGLPointAnnotation()
-                annotation.title = location.areaName[0].value
-                annotation.coordinate = CLLocationCoordinate2D(latitude: Double(location.latitude) ?? 0.0, longitude: Double(location.longitude) ?? 0.0)
-                annotation.subtitle = "Ski Centres"
-                print(annotation)
-                annotations.append(annotation)
-            }
-            skiPlaces = skiResult
-            group.leave()
-        })
-        */
+        let searchType = ["Mountain", "National Parks", "Beaches", "Ski Resort", "Kayaking"]
+
         for n in 0..<searchType.count {
             group.enter()
-
             LandmarkStruct().searchNearby(userLatitude: userLatitude, userLongitude: userLongitude, type: searchType[n], completion: { points in
                 places.append(points)
                 for location in points {
                     let annotation = MGLPointAnnotation()
                     annotation.title = location.name
-                    annotation.coordinate = location.coordinate
-                    annotation.subtitle = location.type
+                    annotation.coordinate = CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)
+                    annotation.subtitle = type().activityType(type: location.type)
                     annotations.append(annotation)
                 }
                 group.leave()
@@ -61,7 +47,9 @@ struct iosMapView: View {
         NavigationView {
             VStack{
                 ZStack{
-                    MapView(annos: $annotationsVM.annos).centerCoordinate(.init(latitude: userLatitude, longitude: userLongitude)).userLoc(true).styleURL(URL(string: "mapbox://styles/mapbox/outdoors-v11")!)
+                   // Rectangle().foregroundColor(.accentColor)
+                    Blur().ignoresSafeArea(.all).opacity(0.3)
+                    MapView(annos: $annotations).userLoc(true).styleURL(URL(string: "mapbox://styles/mapbox/outdoors-v11")!)
                     if clicked == true && loaded == false {
                         Blur()
                             .frame(width:  UIScreen.main.bounds.width, height:  UIScreen.main.bounds.height)
@@ -71,11 +59,15 @@ struct iosMapView: View {
                         Spacer()
                         if clicked == false {
                             Button(action: {
-                                clicked = true
-                                getLocations()
-                                group.notify(queue: .main) {
-                                    annotationsVM.addNextAnnotation(annotation: annotations)
-                                    loaded = true
+                                if monitor.connected {
+                                    clicked = true
+                                    getLocations()
+                                    group.notify(queue: .main) {
+                                       // annotationsVM.addNextAnnotation(annotation: annotations)
+                                        loaded = true
+                                    }
+                                } else {
+                                    showAlert = true
                                 }
                             }) {
                                 Text("Find Acitvities")
@@ -84,6 +76,9 @@ struct iosMapView: View {
                             .buttonStyle(GradientButtonStyle())
                             .offset(x: 0.0, y: -30.0)
                             .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/, 30)
+                            .alert(isPresented: $showAlert, content: {
+                                return Alert(title: Text("No Internet Connection"), message: Text("Please enable WiFi or Cellular data"), dismissButton: .default(Text("Try again")))
+                            })
                         }
                     }
                     if clicked == true {
@@ -96,6 +91,7 @@ struct iosMapView: View {
                                             Spacer()
                                             Button(action: {
                                                 reset()
+                                                
                                             }, label: {
                                                 Image(systemName: "plus")
                                                     .rotationEffect(.init(degrees: 45))
@@ -120,16 +116,16 @@ struct iosMapView: View {
             //.navigationBarTitleDisplayMode(.large)
             //.navigationTitle(Text("Explore"))
         }.onDisappear(perform: {
-            reset()
+           // reset()
         })
     }
 
     func reset() {
         clicked = false
-        annotationsVM.deleteAnnos()
+        annotations.removeAll()
         places.removeAll()
         loaded = false
-        locationManager.start()
+        //locationManager.start()
         //skiPlaces.removeAll()
     }
 }
@@ -143,12 +139,6 @@ struct GradientButtonStyle: ButtonStyle {
             .cornerRadius(15.0)
             .scaleEffect(configuration.isPressed ? 1.1 : 1.0)
             .shadow(color: Color.black.opacity(0.5), radius: 5, x: 5, y: 5)
-    }
-}
-
-struct iosMapView_Previews: PreviewProvider {
-    static var previews: some View {
-        iosMapView()
     }
 }
 

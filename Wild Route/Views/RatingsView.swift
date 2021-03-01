@@ -9,24 +9,39 @@ import SwiftUI
 
 struct RatingsView: View {
     
-    @ObservedObject var rating = RatingStructure()
+    @State var rating = RatingStructure()
+    @State var ra = [Rating]()
+    
     var body: some View {
         NavigationView {
-            List(rating.ratings) { item in
-                HStack {
-                    Text("\(item.score) stars at ")
-                    Text("\(item.location)")
-                }
+            List(ra) { item in
+                NavigationLink(destination: New()) {
+                    HStack {
+                        Text("\(item.score) stars at ")
+                        Text("\(item.location)")
+                    }
+                    }
             }
             
             .navigationBarTitleDisplayMode(.large)
             .navigationTitle(Text("Your Ratings"))
+        }.onAppear {
+            rating.loadRatings { (ratings) in
+                ra = ratings
+            }
         }
     }
 }
 
-struct RatingsView_Previews: PreviewProvider {
-    static var previews: some View {
-        RatingsView()
+
+struct New : View {
+    
+    
+    var body: some View {
+        VStack{
+            HStack {
+                Text("test")
+            }
+        }.background(Color(UIColor(.accentColor)))
     }
 }

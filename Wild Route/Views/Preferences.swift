@@ -82,9 +82,3 @@ struct Preferences: View {
         savePreference()
     }
 }
-
-struct Preferences_Previews: PreviewProvider {
-    static var previews: some View {
-        Preferences()
-    }
-}

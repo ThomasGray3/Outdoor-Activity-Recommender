@@ -18,6 +18,7 @@ class LocationManager: NSObject, ObservableObject {
     
     func stop() {
         self.locationManager.stopUpdatingLocation()
+        self.locationManager.delegate = nil
     }
     func start() {
         self.locationManager.startUpdatingLocation()

@@ -31,10 +31,7 @@ struct MapView: UIViewRepresentable {
         if let currentAnnotations = view.annotations {
             view.removeAnnotations(currentAnnotations)
         }
-        
         view.addAnnotations(annos)
-       
-      
     }
     
     func makeCoordinator() -> MapView.Coordinator {
@@ -158,18 +155,21 @@ class AnnotationsVM: ObservableObject {
 
 class CustomAnnotationView: MGLAnnotationView {
     override func layoutSubviews() {
+       // print(type().activityType(type: "Mountain"))
         super.layoutSubviews()
         layer.cornerRadius = bounds.width / 2
         layer.borderWidth = 2
         layer.borderColor = UIColor.white.cgColor
-        if annotation?.subtitle == "Mountains" {
+        if annotation?.subtitle == type().activityType(type: "Mountain") {
             layer.backgroundColor = UIColor(red: 107/255, green: 239/255, blue: 98/255, alpha: 1.0).cgColor
-        } else if annotation?.subtitle == "Beaches" {
+        } else if annotation?.subtitle == type().activityType(type: "Beaches") {
             layer.backgroundColor = UIColor(red: 99/255, green: 225/255, blue: 242/255, alpha: 1.0).cgColor
-        } else if annotation?.subtitle == "National Parks" {
+        } else if annotation?.subtitle == type().activityType(type: "National Parks") {
             layer.backgroundColor = UIColor(red: 255/255, green: 194/255, blue: 104/255, alpha: 1.0).cgColor
-        } else if annotation?.subtitle == "Ski Centre" {
+        } else if annotation?.subtitle == type().activityType(type:"Ski Resort") {
             layer.backgroundColor = UIColor.lightGray.cgColor
+        } else if annotation?.subtitle == type().activityType(type:"Kayaking") {
+            layer.backgroundColor = UIColor(red: 16/255, green: 0/255, blue: 249/255, alpha: 1.0).cgColor
         } else {
             layer.backgroundColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1.0).cgColor
         }

@@ -4,18 +4,16 @@
 //
 //  Created by THOMAS GRAY on 29/12/2020.
 //
-
 import SwiftUI
-//import FirebaseAuth
 
 struct TabBar: View {
     
-    @State var selectedTab = "explore"
+    @State var selectedTab: Tabs = .explore
     @Environment(\.managedObjectContext) private var viewContext
+
     @FetchRequest(sortDescriptors: [])
     private var preference: FetchedResults<UserPreference>
     @State var emptyCoreData = true
-    
     
     func checkData() {
         if (preference.isEmpty) {
@@ -25,83 +23,93 @@ struct TabBar: View {
         }
     }
     
-   
-    
     var body: some View {
         VStack {
-            if (emptyCoreData) {
-                    VStack {
-                        Preferences()
-                        Button(action: {
-                            checkData()
-                        }) {
-                            Text("Next")
-                                .font(.system(size: 20, weight: .heavy, design: .default))
-                        }
-                        .buttonStyle(GradientButtonStyle())
+          /*  if (emptyCoreData) {
+                VStack {
+                    Preferences()
+                    Button(action: {
+                        checkData()
+                    }) {
+                        Text("Next")
+                            .font(.system(size: 20, weight: .heavy, design: .default))
                     }
-            } else {
-                TabView(selection: $selectedTab) {
-                    iosMapView()
-                        .tag("explore")
-                        .tabItem {
-                            if (selectedTab == "explore") {
-                                Image(systemName: "map.fill")
-                            } else{
-                                Image(systemName: "map")
-                            }
-                            Text("Explore")
-                        }
-                    
-                    FavouritesView()
-                        .tag("favourites")
-                        .tabItem {
-                            if (selectedTab == "favourites") {
-                                Image(systemName: "heart.fill")
-                            } else{
-                                Image(systemName: "heart")
-                            }
-                            Text("Favourites")
-                        }
-                       
-                    RatingsView()
-                        .tag("ratings")
-                        .tabItem {
-                            if (selectedTab == "ratings") {
-                                Image(systemName: "star.fill")
-                            } else{
-                                Image(systemName: "star")
-                            }
-                            Text("Ratings")
-                        }
-                        
-                    UserProfileView()
-                        .tag("profile")
-                        .tabItem {
-                            if (selectedTab == "profile") {
-                                Image(systemName: "person.fill")
-                            } else{
-                                Image(systemName: "person")
-                            }
-                            Text("Profile")
-                        }
+                    .buttonStyle(GradientButtonStyle())
                 }
-                .font(.headline)
-                .tabViewStyle(/*@START_MENU_TOKEN@*/DefaultTabViewStyle()/*@END_MENU_TOKEN@*/)
-            }
-        }.onAppear {
+            } else {*/
+               
+                    TabView(selection: $selectedTab) {
+                        iosMapView()
+                            .tag(Tabs.explore)
+                            .tabItem {
+                                if (selectedTab == Tabs.explore) {
+                                    Image(systemName: "map.fill")
+                                } else{
+                                    Image(systemName: "map")
+                                }
+                                Text("Explore")
+                            }
+                        FavouritesView()
+                            .tag(Tabs.fav)
+                            .tabItem {
+                                if (selectedTab == Tabs.fav) {
+                                    Image(systemName: "heart.fill")
+                                } else{
+                                    Image(systemName: "heart")
+                                }
+                                Text("Favourites")
+                            }
+                        RatingsView()
+                            .tag(Tabs.ratings)
+                            .tabItem {
+                                if (selectedTab == Tabs.ratings) {
+                                    Image(systemName: "star.fill")
+                                } else{
+                                    Image(systemName: "star")
+                                }
+                                Text("Ratings")
+                            }
+                      /*  UserProfileView()
+                            .tag(Tabs.profile)
+                            .tabItem {
+                                if (selectedTab == Tabs.profile) {
+                                    Image(systemName: "person.fill")
+                                } else{
+                                    Image(systemName: "person")
+                                }
+                                Text("Profile")
+                            }*/
+                    }
+                    .tabViewStyle(/*@START_MENU_TOKEN@*/DefaultTabViewStyle()/*@END_MENU_TOKEN@*/)
+                
+           // }
+        }
+        .onAppear {
             AppDelegate.orientationLock = UIInterfaceOrientationMask.portrait
             UIDevice.current.setValue(UIInterfaceOrientation.portrait.rawValue, forKey: "orientation")
             UINavigationController.attemptRotationToDeviceOrientation()
-        }
-        .onAppear(perform: {
+        }.onAppear(perform: {
             checkData()
         })
     }
-}
-
-struct TabBar_Previews: PreviewProvider {
-    static var previews: some View {
-        TabBar()
+    
+    enum Tabs {
+        case explore, fav, ratings, profile
+    }
+    
+    func returnNaviBarTitle(selectedTab: Tabs) -> String { //this function will return the correct NavigationBarTitle when different tab is selected.
+        switch selectedTab {
+        case .explore: return ""
+        case .fav: return "Favourites"
+        case .ratings: return "Ratings"
+        case .profile: return "Profile"
+        }
+    }
+    func hideNavBar(selectedTab: Tabs) -> Bool {
+        if selectedTab == .explore {
+            return true
+        } else {
+            return false
+        }
     }
 }
