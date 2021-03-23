@@ -25,9 +25,9 @@ struct TabBar: View {
     
     var body: some View {
         VStack {
-          /*  if (emptyCoreData) {
+            if (emptyCoreData) {
                 VStack {
-                    Preferences()
+                    Preferences(title: "Welcome")
                     Button(action: {
                         checkData()
                     }) {
@@ -36,7 +36,7 @@ struct TabBar: View {
                     }
                     .buttonStyle(GradientButtonStyle())
                 }
-            } else {*/
+            } else {
                
                     TabView(selection: $selectedTab) {
                         iosMapView()
@@ -69,7 +69,7 @@ struct TabBar: View {
                                 }
                                 Text("Ratings")
                             }
-                      /*  UserProfileView()
+                        UserProfileView()
                             .tag(Tabs.profile)
                             .tabItem {
                                 if (selectedTab == Tabs.profile) {
@@ -78,11 +78,11 @@ struct TabBar: View {
                                     Image(systemName: "person")
                                 }
                                 Text("Profile")
-                            }*/
+                            }
                     }
                     .tabViewStyle(/*@START_MENU_TOKEN@*/DefaultTabViewStyle()/*@END_MENU_TOKEN@*/)
                 
-           // }
+            }
         }
         .onAppear {
             AppDelegate.orientationLock = UIInterfaceOrientationMask.portrait

@@ -44,18 +44,20 @@ class RatingStructure: ObservableObject {
     var landmark = [LandmarkDB]()
     
     func loadRatings(completion: @escaping ([Rating])-> Void) {
-        db.collection("rating").order(by: "timeCreated").addSnapshotListener { (query, error) in
-            if let query = query {
-                self.ratings = query.documents.compactMap { document in
-                    do {
-                        let x = try document.data(as: Rating.self)
-                        return x
-                    } catch {
-                        print(error)
+        if let userId = Auth.auth().currentUser?.uid {
+            db.collection("rating").whereField("user", isEqualTo: userId).addSnapshotListener { (query, error) in
+                if let query = query {
+                    self.ratings = query.documents.compactMap { document in
+                        do {
+                            let x = try document.data(as: Rating.self)
+                            return x
+                        } catch {
+                            print(error)
+                        }
+                        return nil
                     }
-                    return nil
+                    completion(self.ratings)
                 }
-                completion(self.ratings)
             }
         }
     }
@@ -105,12 +107,22 @@ class RatingStructure: ObservableObject {
         if let favID = fav.id {
             do {
                 let _ =  db.collection("favourite").document(favID).delete()
-                print("REMOVED")
+                print("REMOVED fav")
                 completion(true)
             }
         }
     }
     
+    
+    func removeRating(rating: Rating, completion: @escaping (Bool)-> Void) {
+        if let ratingID = rating.id {
+            do {
+                let _ =  db.collection("rating").document(ratingID).delete()
+                print("REMOVED rating")
+                completion(true)
+            }
+        }
+    }
     
     
     func addFavourite(location: String) {
@@ -192,7 +204,25 @@ class RatingStructure: ObservableObject {
         }
     }
     
-    func addReview() {
-        
+    func addReview(rating: Rating) {
+        do {
+            let _ = try db.collection("rating").addDocument(from: rating)
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+    
+    func updateReview(rating: Rating) {
+        db.collection("rating").document(rating.id!).getDocument { (document, err) in
+            if let err = err {
+                print(err.localizedDescription)
+            }
+            else {
+                document?.reference.updateData([
+                    "score": rating.score
+                ])
+                print("UPDATED")
+            }
+        }
     }
 }

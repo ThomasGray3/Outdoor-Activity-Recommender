@@ -27,6 +27,8 @@
 		E35549DF25C899AD00066769 /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35549DE25C899AD00066769 /* ActivityView.swift */; };
 		E35549E125C989B200066769 /* UserLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35549E025C989B100066769 /* UserLocation.swift */; };
 		E3737E7325AF60A1005B98FF /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3737E7225AF60A1005B98FF /* Persistence.swift */; };
+		E376F1CC25FBD4380066A983 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E376F1CB25FBD4380066A983 /* Filter.swift */; };
+		E376F1CE2600DD950066A983 /* ContentFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E376F1CD2600DD950066A983 /* ContentFilter.swift */; };
 		E379225825CF05AF00B3819A /* RatingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E379225725CF05AF00B3819A /* RatingsView.swift */; };
 		E379237E25D0A1F100B3819A /* DisplaySearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = E379237D25D0A1F100B3819A /* DisplaySearch.swift */; };
 		E379238125D181DF00B3819A /* MapboxMobileEvents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E379237F25D181D300B3819A /* MapboxMobileEvents.framework */; };
@@ -75,6 +77,8 @@
 		E35549DE25C899AD00066769 /* ActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
 		E35549E025C989B100066769 /* UserLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocation.swift; sourceTree = "<group>"; };
 		E3737E7225AF60A1005B98FF /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		E376F1CB25FBD4380066A983 /* Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
+		E376F1CD2600DD950066A983 /* ContentFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentFilter.swift; sourceTree = "<group>"; };
 		E379225725CF05AF00B3819A /* RatingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingsView.swift; sourceTree = "<group>"; };
 		E379237D25D0A1F100B3819A /* DisplaySearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplaySearch.swift; sourceTree = "<group>"; };
 		E379237F25D181D300B3819A /* MapboxMobileEvents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapboxMobileEvents.framework; path = "../../Downloads/mapbox-ios-sdk-dynamic-with-events/dynamic/MapboxMobileEvents.framework"; sourceTree = "<group>"; };
@@ -177,6 +181,8 @@
 				E379237D25D0A1F100B3819A /* DisplaySearch.swift */,
 				E35549E025C989B100066769 /* UserLocation.swift */,
 				E34DD74925E2FCCB002B81C6 /* WeatherCard.swift */,
+				E376F1CB25FBD4380066A983 /* Filter.swift */,
+				E376F1CD2600DD950066A983 /* ContentFilter.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -312,12 +318,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				E31108B5259AB39A00C1C4CB /* iosMapView.swift in Sources */,
+				E376F1CE2600DD950066A983 /* ContentFilter.swift in Sources */,
 				E321240625B7602400BBCA89 /* MapBoxMap.swift in Sources */,
 				E31108B3259AB39A00C1C4CB /* Wild_Route.swift in Sources */,
 				E379237E25D0A1F100B3819A /* DisplaySearch.swift in Sources */,
 				E34DD74A25E2FCCB002B81C6 /* WeatherCard.swift in Sources */,
 				E3C22DD325CDFA050025332C /* RatingStructure.swift in Sources */,
 				E31108D4259B9B9D00C1C4CB /* FavouritesView.swift in Sources */,
+				E376F1CC25FBD4380066A983 /* Filter.swift in Sources */,
 				E321244F25BC681500BBCA89 /* SlideOverCard.swift in Sources */,
 				E35549E125C989B200066769 /* UserLocation.swift in Sources */,
 				E31108D0259B967300C1C4CB /* UserProfileView.swift in Sources */,

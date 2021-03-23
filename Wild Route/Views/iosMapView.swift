@@ -19,6 +19,7 @@ struct iosMapView: View {
     let group = DispatchGroup()
     @ObservedObject var monitor = NetworkMonitor()
     @State var showAlert = false
+    @State var showLocAlert = false
     
     func getLocations() {
         userLatitude = locationManager.location?.coordinate.latitude ?? 0.0
@@ -59,18 +60,20 @@ struct iosMapView: View {
                         Spacer()
                         if clicked == false {
                             Button(action: {
-                                if monitor.connected {
+                                if (monitor.connected) && ((locationManager.status() != .denied) &&  (locationManager.status() != .notDetermined) &&  (locationManager.status() != .restricted)) {
                                     clicked = true
                                     getLocations()
                                     group.notify(queue: .main) {
                                        // annotationsVM.addNextAnnotation(annotation: annotations)
                                         loaded = true
                                     }
-                                } else {
+                                } else if !(monitor.connected) {
                                     showAlert = true
+                                } else if ((locationManager.status() == .denied) ||  (locationManager.status() == .notDetermined) ||  (locationManager.status() == .restricted)) {
+                                    showLocAlert = true
                                 }
                             }) {
-                                Text("Find Acitvities")
+                                Text("Find Me Acitvities")
                                     .font(.system(size: 28, weight: .heavy, design: .default))
                             }
                             .buttonStyle(GradientButtonStyle())
@@ -78,6 +81,9 @@ struct iosMapView: View {
                             .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/, 30)
                             .alert(isPresented: $showAlert, content: {
                                 return Alert(title: Text("No Internet Connection"), message: Text("Please enable WiFi or Cellular data"), dismissButton: .default(Text("Try again")))
+                            })
+                            .alert(isPresented: $showLocAlert, content: {
+                                return Alert(title: Text("No Location Determined"), message: Text("Please enable location services by going to Settings -> Privacy -> Location Services -> Wild Route"), dismissButton: .default(Text("Try again")))
                             })
                         }
                     }

@@ -4,7 +4,6 @@
 //
 //  Created by THOMAS GRAY on 29/12/2020.
 //
-
 import SwiftUI
 
 struct FavouritesView: View {
@@ -16,21 +15,22 @@ struct FavouritesView: View {
     
     var body: some View {
         NavigationView {
-            List {
-                ForEach(favs) { favs in
-                    NavigationLink(
-                        destination:
-                            ActivityCard(landmark: landmark, name: favs.location)
-                    ){
-                            Text(favs.location)
+            
+                List {
+                    ForEach(favs) { favs in
+                        NavigationLink(
+                            destination:
+                                ActivityCard(landmark: landmark, name: favs.location)
+                        ){
+                                Text(favs.location)
+                        }
                     }
+                    .onDelete(perform: delete)
                 }
-                .onDelete(perform: delete)
-            }
-            .navigationBarTitleDisplayMode(.large)
-            .navigationBarItems(trailing: EditButton())
-            .navigationTitle(Text("Favourites"))
-        }.onAppear {
+                .navigationBarItems(trailing: EditButton())
+                .navigationTitle(Text("Favourites"))
+        }
+        .onAppear {
             favourite.loadFavs() { (favos) in
                 favs = favos
             }

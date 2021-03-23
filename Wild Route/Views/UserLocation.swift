@@ -23,6 +23,9 @@ class LocationManager: NSObject, ObservableObject {
     func start() {
         self.locationManager.startUpdatingLocation()
     }
+    func status() -> CLAuthorizationStatus {
+        return self.locationManager.authorizationStatus
+    }
 }
 
 

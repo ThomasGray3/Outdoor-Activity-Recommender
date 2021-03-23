@@ -9,9 +9,29 @@ import Foundation
 
 struct DisplaySearch: View {
     var places: [[LandmarkDB]]
+    @Environment(\.managedObjectContext) private var viewContext
+    @FetchRequest(sortDescriptors: [])
+    private var preference: FetchedResults<UserPreference>
+    @State var filteredMatrix:[(type: String, value: Double)] = []
     
     var body: some View {
         Form {
+            Section {
+                ForEach(0..<filteredMatrix.count, id: \.self) { index in
+                    Text(type().activityType(type: filteredMatrix[index].type))
+                    //ForEach(0..<Int(filteredMatrix[index].value)) { value in
+                        ForEach(0..<places.count, id: \.self) { i in
+                            if places[i][0].type == filteredMatrix[index].type {
+                                ForEach(0..<Int(filteredMatrix[index].value)) { value in
+                                    Text(places[i][value].name)
+                                }
+                            }
+                        }
+                   // }
+                }
+            }
+                
+            
             Section {
                 if !places.isEmpty {
                     ForEach(0..<places.count, id: \.self) { place in
@@ -43,6 +63,7 @@ struct DisplaySearch: View {
         .background(Color.clear)
         .onAppear(perform: {
             UITableView.appearance().backgroundColor = .clear
+            filteredMatrix = Cfilter().calculate(pref: preference, places: places)
         })
     }
     
@@ -106,6 +127,34 @@ class type: ObservableObject {
         else if(type == "Kayaking")
         {
             return "Kayaking";
+        } 
+        return "Miscellaneous"
+    }
+    
+    func reverseType(type: String) -> String {
+        if(type == "Hiking")
+        {
+            return "Mountain";
+        }
+        else if(type == "Surfing")
+        {
+            return "Beaches";
+        }
+        else if(type == "Outdoor Exploring")
+        {
+            return "National Parks";
+        }
+        else if(type == "Snowsports")
+        {
+            return "Ski Resort";
+        }
+        else if(type == "Kayaking")
+        {
+            return "Kayaking";
+        }
+        else if(type == "Exploring")
+        {
+            return "National Parks";
         }
         return "Miscellaneous"
     }
