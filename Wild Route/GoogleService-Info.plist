@@ -13,21 +13,21 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.ThomasGray.Wild-Route</string>
+	<string>com.ThomasGray.WildRoute</string>
 	<key>PROJECT_ID</key>
 	<string>wild-route</string>
 	<key>STORAGE_BUCKET</key>
 	<string>wild-route.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
-	<false></false>
+	<false/>
 	<key>IS_ANALYTICS_ENABLED</key>
-	<false></false>
+	<false/>
 	<key>IS_APPINVITE_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>IS_GCM_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>IS_SIGNIN_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>GOOGLE_APP_ID</key>
 	<string>1:1032801084591:ios:1f2afda832ce18733ca05a</string>
 </dict>

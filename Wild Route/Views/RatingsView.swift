@@ -22,7 +22,6 @@ struct RatingsView: View {
     @State var show = false
     @State var star = 0
     
-    
     var body: some View {
         NavigationView {
                 List { 
@@ -33,15 +32,12 @@ struct RatingsView: View {
                                     self.image(for: number)
                                         .foregroundColor(number > item.score ? self.offColor : self.onColor)
                                 }
-                                
                                 Text(item.location)
-                                
                             }
                         }
                     }
                     .onDelete(perform: delete)
                 }
-                
                 .navigationBarItems(trailing: EditButton())
                 .navigationTitle(Text("Your Ratings"))
             

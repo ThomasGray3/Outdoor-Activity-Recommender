@@ -15,7 +15,6 @@ struct FavouritesView: View {
     
     var body: some View {
         NavigationView {
-            
                 List {
                     ForEach(favs) { favs in
                         NavigationLink(

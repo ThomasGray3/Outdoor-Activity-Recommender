@@ -81,7 +81,7 @@ struct MapView: UIViewRepresentable {
         }
         
         func mapView(_ mapView: MGLMapView, didFinishLoading style: MGLStyle) {
-        
+           
             return
         }
         
@@ -125,15 +125,11 @@ struct MapView: UIViewRepresentable {
         }
         
         func mapView(_ mapView: MGLMapView, didSelect annotation: MGLAnnotation) {
-            if annotation.title == "Mapbox" {
-                mapView.styleURL = MGLStyle.lightStyleURL
-            }
+           
            
         }
         func mapView(_ mapView: MGLMapView, didDeselect annotation: MGLAnnotation) {
-            if annotation.title == "Mapbox" {
-                mapView.styleURL = MGLStyle.outdoorsStyleURL(withVersion: 11)
-            }
+            
         }
     }
 }

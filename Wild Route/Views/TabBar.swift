@@ -96,20 +96,4 @@ struct TabBar: View {
     enum Tabs {
         case explore, fav, ratings, profile
     }
-    
-    func returnNaviBarTitle(selectedTab: Tabs) -> String { //this function will return the correct NavigationBarTitle when different tab is selected.
-        switch selectedTab {
-        case .explore: return ""
-        case .fav: return "Favourites"
-        case .ratings: return "Ratings"
-        case .profile: return "Profile"
-        }
-    }
-    func hideNavBar(selectedTab: Tabs) -> Bool {
-        if selectedTab == .explore {
-            return true
-        } else {
-            return false
-        }
-    }
 }

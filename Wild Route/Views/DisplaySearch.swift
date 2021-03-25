@@ -16,24 +16,45 @@ struct DisplaySearch: View {
     
     var body: some View {
         Form {
+            if !places.isEmpty {
             Section {
+                Text("Recommeneded for you")
+                    .fontWeight(.bold)
+                    .padding(.all)
                 ForEach(0..<filteredMatrix.count, id: \.self) { index in
-                    Text(type().activityType(type: filteredMatrix[index].type))
-                    //ForEach(0..<Int(filteredMatrix[index].value)) { value in
-                        ForEach(0..<places.count, id: \.self) { i in
-                            if places[i][0].type == filteredMatrix[index].type {
-                                ForEach(0..<Int(filteredMatrix[index].value)) { value in
-                                    Text(places[i][value].name)
-                                }
+                    if filteredMatrix[index].value > 0.0 {
+                        VStack {
+                            ExDivider(color: changeBkColor(type: filteredMatrix[index].type))
+                            Text(type().activityType(type: filteredMatrix[index].type))
+                                .fontWeight(.bold)
+                                .padding()
+                            ExDivider(color: changeBkColor(type: filteredMatrix[index].type))
+                        }
+                            .padding(.vertical)
+                    }
+                    ForEach(0..<places.count, id: \.self) { i in
+                        if places[i][0].type == filteredMatrix[index].type {
+                            ForEach(0..<Int(filteredMatrix[index].value)) { value in
+                                NavigationLink(
+                                    destination: ActivityCard(landmark: places[i][value]),
+                                    label: {
+                                        VStack(alignment: .leading) {
+                                            Text(places[i][value].name)
+                                                .fontWeight(.bold)
+                                        } .padding(.vertical)
+                                    }
+                                )
                             }
                         }
-                   // }
+                    }
                 }
             }
-                
+            
             
             Section {
-                if !places.isEmpty {
+                Text("All results")
+                    .fontWeight(.bold)
+                    .padding(.all)
                     ForEach(0..<places.count, id: \.self) { place in
                         VStack {
                             ExDivider(color: changeBkColor(type: places[place][0].type))
@@ -55,15 +76,18 @@ struct DisplaySearch: View {
                             )
                         }
                     }
-                } else {
-                    Text("There is nothing in your area :(")
-                }
+                
+            }
+            } else {
+                Text("There is nothing in your area :(")
             }
         }
         .background(Color.clear)
         .onAppear(perform: {
             UITableView.appearance().backgroundColor = .clear
-            filteredMatrix = Cfilter().calculate(pref: preference, places: places)
+            if !places.isEmpty {
+                filteredMatrix = Cfilter().calculate(pref: preference, places: places)
+            }
         })
     }
     

@@ -210,6 +210,7 @@
 				E31108AD259AB39A00C1C4CB /* Resources */,
 				E321240225B75FEB00BBCA89 /* Embed Frameworks */,
 				3FC59E88A4C47213D099C74A /* [CP] Embed Pods Frameworks */,
+				E3207356260D0F7D00B8DBDC /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -309,6 +310,23 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Wild Route/Pods-Wild Route-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		E3207356260D0F7D00B8DBDC /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/Mapbox.framework/strip-frameworks.sh\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -468,6 +486,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Wild Route/Preview Content\"";
 				DEVELOPMENT_TEAM = QTL3ZJFVAP;
 				ENABLE_PREVIEWS = YES;
@@ -482,7 +501,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ThomasGray.Wild-Route";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ThomasGray.WildRoute;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -497,6 +516,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Wild Route/Preview Content\"";
 				DEVELOPMENT_TEAM = QTL3ZJFVAP;
 				ENABLE_PREVIEWS = YES;
@@ -511,7 +531,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ThomasGray.Wild-Route";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ThomasGray.WildRoute;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

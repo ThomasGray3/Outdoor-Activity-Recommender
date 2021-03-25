@@ -48,7 +48,6 @@ struct iosMapView: View {
         NavigationView {
             VStack{
                 ZStack{
-                   // Rectangle().foregroundColor(.accentColor)
                     Blur().ignoresSafeArea(.all).opacity(0.3)
                     MapView(annos: $annotations).userLoc(true).styleURL(URL(string: "mapbox://styles/mapbox/outdoors-v11")!)
                     if clicked == true && loaded == false {
@@ -92,7 +91,7 @@ struct iosMapView: View {
                                 SlideOverCard() {
                                     VStack {
                                         HStack {
-                                            Text("Activities for you, near you...")
+                                            Text("Places for activities near you...")
                                                 .padding(.all)
                                             Spacer()
                                             Button(action: {
@@ -119,11 +118,7 @@ struct iosMapView: View {
                 }
             }
             .navigationBarHidden(true)
-            //.navigationBarTitleDisplayMode(.large)
-            //.navigationTitle(Text("Explore"))
-        }.onDisappear(perform: {
-           // reset()
-        })
+        }
     }
 
     func reset() {
@@ -131,8 +126,6 @@ struct iosMapView: View {
         annotations.removeAll()
         places.removeAll()
         loaded = false
-        //locationManager.start()
-        //skiPlaces.removeAll()
     }
 }
 
