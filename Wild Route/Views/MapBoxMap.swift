@@ -166,6 +166,10 @@ class CustomAnnotationView: MGLAnnotationView {
             layer.backgroundColor = UIColor.lightGray.cgColor
         } else if annotation?.subtitle == type().activityType(type:"Kayaking") {
             layer.backgroundColor = UIColor(red: 16/255, green: 0/255, blue: 249/255, alpha: 1.0).cgColor
+        } else if annotation?.subtitle == type().activityType(type:"Golf Course") {
+            layer.backgroundColor = UIColor(red: 255/255, green: 216/255, blue: 0/255, alpha: 1.0).cgColor
+        } else if annotation?.subtitle == type().activityType(type:"Tennis Court") {
+            layer.backgroundColor = UIColor(red: 6/255, green: 122/255, blue: 0/255, alpha: 1.0).cgColor
         } else {
             layer.backgroundColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1.0).cgColor
         }

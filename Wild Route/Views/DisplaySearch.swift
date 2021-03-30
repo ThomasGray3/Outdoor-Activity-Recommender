@@ -111,6 +111,15 @@ struct DisplaySearch: View {
         else if(type == "Kayaking")
         {
             return Color(UIColor(red: 16/255, green: 0/255, blue: 249/255, alpha: 1.0))
+        }
+        else if(type == "Golf Course")
+        {
+            return Color(UIColor(red: 255/255, green: 216/255, blue: 0/255, alpha: 1.0));
+        }
+        else if(type == "Tennis Court")
+        {
+            return Color(UIColor(red: 6/255, green: 122/255, blue: 0/255, alpha: 1.0))
+        
         } else {
             return Color.white
         }
@@ -151,7 +160,15 @@ class type: ObservableObject {
         else if(type == "Kayaking")
         {
             return "Kayaking";
-        } 
+        }
+        else if(type == "Golf Course")
+        {
+            return "Golf";
+        }
+        else if(type == "Tennis Court")
+        {
+            return "Tennis";
+        }
         return "Miscellaneous"
     }
     
@@ -180,6 +197,14 @@ class type: ObservableObject {
         {
             return "National Parks";
         }
+        else if(type == "Golf")
+        {
+            return "Golf Course";
+        }
+        else if(type == "Tennis")
+        {
+            return "Tennis Court";
+        }
         return "Miscellaneous"
     }
     
@@ -203,7 +228,16 @@ class type: ObservableObject {
         else if(type == "Kayaking")
         {
             return Color(UIColor(red: 16/255, green: 0/255, blue: 249/255, alpha: 1.0))
-        } else {
+        }
+        else if(type == "Golf Course")
+        {
+            return Color(UIColor(red: 255/255, green: 216/255, blue: 0/255, alpha: 1.0));
+        }
+        else if(type == "Tennis Court")
+        {
+            return Color(UIColor(red: 6/255, green: 122/255, blue: 0/255, alpha: 1.0))
+        }
+        else {
             return Color.white
         }
     }

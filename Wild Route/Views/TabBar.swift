@@ -31,9 +31,10 @@ struct TabBar: View {
                     Button(action: {
                         checkData()
                     }) {
-                        Text("Next")
+                        Text("Create Profile")
                             .font(.system(size: 20, weight: .heavy, design: .default))
                     }
+                    .disabled(preference.count < 3)
                     .buttonStyle(GradientButtonStyle())
                 }
             } else {

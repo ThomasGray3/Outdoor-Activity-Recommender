@@ -17,7 +17,7 @@ struct Preferences: View {
     private var preference: FetchedResults<UserPreference>
     
     @State private var selectedAct = 0
-    @State private var activities = ["Hiking", "Snowsports", "Surfing", "Kayaking", "Exploring"]
+    @State private var activities = ["Hiking", "Snowsports", "Surfing", "Kayaking", "Exploring", "Golf", "Tennis"]
     @State private var selectedScore = 0
     @State private var score = ["1","2","3","4","5"]
     @State private var visible = false
