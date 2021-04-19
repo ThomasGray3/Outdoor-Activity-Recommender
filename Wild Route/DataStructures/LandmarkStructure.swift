@@ -58,7 +58,7 @@ class LandmarkStruct {
                 places.append(LandmarkDB(name: i.placemark.name ?? "", description: i.placemark.title ?? "", latitude: i.placemark.coordinate.latitude, longitude: i.placemark.coordinate.longitude, type: type))
               
             }
-           // print(places)
+            print(places)
             completion(places)
         }
     }

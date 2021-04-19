@@ -125,7 +125,7 @@ struct iosMapView: View {
                                     showLocAlert = true
                                 }
                             }) {
-                                Text("Find Me Acitvities")
+                                Text("Find Me Activities")
                                     .font(.system(size: 28, weight: .heavy, design: .default))
                             }
                             .buttonStyle(GradientButtonStyle())
@@ -235,3 +235,4 @@ struct Blur: UIViewRepresentable {
         uiView.effect = UIBlurEffect(style: style)
     }
 }
+

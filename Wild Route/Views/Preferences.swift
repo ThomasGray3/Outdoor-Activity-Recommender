@@ -19,7 +19,7 @@ struct Preferences: View {
     @State private var selectedAct = 0
     @State private var activities = ["Hiking", "Snowsports", "Surfing", "Kayaking", "Exploring", "Golf", "Tennis"]
     @State private var selectedScore = 0
-    @State private var score = ["1","2","3","4","5"]
+    @State private var score = ["1","2","3"]
     @State private var visible = false
     
     var body: some View {
@@ -34,11 +34,13 @@ struct Preferences: View {
                                     Spacer()
                                     Text("Rank: \(Int(UserPreference.score))")
                                 }
+                                .listRowBackground(color(score: (Int(UserPreference.score))))
                             }  .onDelete(perform: deletePreference)
+                           
                         }
                     }
                     if preference.count < 3 {
-                        Section(header: Text("Please select 3 of your preferred activies and give them a score ")) {
+                        Section(header: Text("Please select 3 of your favourite activies and rank them in preference from 1st to 3rd")) {
                             HStack {
                                 Picker(selection: $selectedAct, label: Text("Select an activity")) {
                                     ForEach(0 ..< activities.count) {
@@ -101,4 +103,17 @@ struct Preferences: View {
         newPreference.score = Double(score[selectedScore]) ?? 0.0
         savePreference()
     }
+}
+
+func color(score: Int) -> Color {
+    if (score == 1) {
+        return Color(UIColor(red: 255/255, green: 210/255, blue: 30/255, alpha: 1.0))
+    }
+    else if (score == 2) {
+        return Color(UIColor(red: 255/255, green: 224/255, blue: 102/255, alpha: 1.0))
+    }
+    else if (score == 3) {
+        return Color(UIColor(red: 255/255, green: 241/255, blue: 186/255, alpha: 1.0))
+    }
+    return Color.white
 }
