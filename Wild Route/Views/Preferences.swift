@@ -32,7 +32,16 @@ struct Preferences: View {
                                 HStack {
                                     Text("Activity type:  \(type().activityType(type: UserPreference.activity ?? "Untitled"))")
                                     Spacer()
-                                    Text("Rank: \(Int(UserPreference.score))")
+                                    if Int(UserPreference.score) == 3 {
+                                        Text("Rank: 1")
+                                    }
+                                    if Int(UserPreference.score) == 2 {
+                                        Text("Rank: 2")
+                                    }
+                                    if Int(UserPreference.score) == 1 {
+                                        Text("Rank: 3")
+                                    }
+                                    
                                 }
                                 .listRowBackground(color(score: (Int(UserPreference.score))))
                             }  .onDelete(perform: deletePreference)
@@ -100,19 +109,28 @@ struct Preferences: View {
         let newPreference = UserPreference(context: viewContext)
         newPreference.activity = type().reverseType(type: activities[selectedAct])
         newPreference.id = UUID()
-        newPreference.score = Double(score[selectedScore]) ?? 0.0
+        if Double(score[selectedScore]) == 3 {
+            newPreference.score = 1
+        }
+        if Double(score[selectedScore]) == 2 {
+            newPreference.score = 2
+        }
+        if Double(score[selectedScore]) == 1 {
+            newPreference.score = 3
+        }
+       
         savePreference()
     }
 }
 
 func color(score: Int) -> Color {
-    if (score == 1) {
+    if (score == 3) {
         return Color(UIColor(red: 255/255, green: 210/255, blue: 30/255, alpha: 1.0))
     }
     else if (score == 2) {
         return Color(UIColor(red: 255/255, green: 224/255, blue: 102/255, alpha: 1.0))
     }
-    else if (score == 3) {
+    else if (score == 1) {
         return Color(UIColor(red: 255/255, green: 241/255, blue: 186/255, alpha: 1.0))
     }
     return Color.white

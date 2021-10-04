@@ -1,10 +1,5 @@
 import SwiftUI
 
-
-
-
-import SwiftUI
-
 struct SlideOverCard<Content: View> : View {
     @GestureState private var dragState = DragState.inactive
     @State var position = CardPosition.middle
